@@ -1,1639 +1,403 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Next Intellectus - Agentes de IA que Revolucionam Empresas</title>
-    
-    <!-- Facebook Pixel Code -->
-    <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1077839464457583');
-    fbq('track', 'PageView');
-    </script>
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=1077839464457583&ev=PageView&noscript=1"
-    /></noscript>
-    <!-- End Facebook Pixel Code -->
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap');
-        
-        * {
-            font-family: 'Inter', sans-serif;
-        }
-        
-        html, body {
-            scroll-behavior: smooth;
-            overflow-x: hidden;
-            overflow-y: auto;
-        }
-        
-        .tech-font {
-            font-family: 'Orbitron', monospace;
-        }
-        
-        .gradient-bg {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #334155 50%, #1e293b 75%, #0f172a 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .gradient-bg::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.03) 0%, transparent 50%);
-            animation: gradientShift 20s ease-in-out infinite;
-        }
-        
-        @keyframes gradientShift {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
-        
-        .neural-network {
-            background: linear-gradient(145deg, #0f172a, #1e293b, #334155);
-            position: relative;
-        }
-        
-        .matrix-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.1;
-            background-image: 
-                linear-gradient(0deg, transparent 24%, rgba(59, 130, 246, 0.3) 25%, rgba(59, 130, 246, 0.3) 26%, transparent 27%, transparent 74%, rgba(148, 163, 184, 0.3) 75%, rgba(148, 163, 184, 0.3) 76%, transparent 77%, transparent),
-                linear-gradient(90deg, transparent 24%, rgba(59, 130, 246, 0.3) 25%, rgba(59, 130, 246, 0.3) 26%, transparent 27%, transparent 74%, rgba(148, 163, 184, 0.3) 75%, rgba(148, 163, 184, 0.3) 76%, transparent 77%, transparent);
-            background-size: 75px 75px;
-            animation: matrixMove 20s linear infinite;
-        }
-        
-        @keyframes matrixMove {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(75px, 75px); }
-        }
-        
-        .glow-blue {
-            box-shadow: 
-                0 0 15px rgba(59, 130, 246, 0.2),
-                0 0 25px rgba(59, 130, 246, 0.1);
-        }
-        
-        .floating {
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            33% { transform: translateY(-20px) rotate(2deg); }
-            66% { transform: translateY(-10px) rotate(-2deg); }
-        }
-        
-        .pulse-glow {
-            animation: pulseGlow 3s ease-in-out infinite;
-        }
-        
-        @keyframes pulseGlow {
-            0%, 100% { 
-                box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
-                transform: scale(1);
-            }
-            50% { 
-                box-shadow: 0 0 40px rgba(59, 130, 246, 0.8);
-                transform: scale(1.05);
-            }
-        }
-        
-        .tech-grid {
-            background-image: 
-                linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: gridMove 30s linear infinite;
-        }
-        
-        @keyframes gridMove {
-            0% { background-position: 0 0, 0 0; }
-            100% { background-position: 50px 50px, 50px 50px; }
-        }
-        
-        .agent-card {
-            backdrop-filter: blur(15px);
-            background: linear-gradient(145deg, rgba(71, 85, 105, 0.1), rgba(51, 65, 85, 0.05));
-            border: 1px solid rgba(148, 163, 184, 0.2);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .agent-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
-            transition: left 0.5s;
-        }
-        
-        .agent-card:hover::before {
-            left: 100%;
-        }
-        
-        .agent-card:hover {
-            background: linear-gradient(145deg, rgba(59, 130, 246, 0.08), rgba(71, 85, 105, 0.1));
-            border-color: rgba(59, 130, 246, 0.4);
-            transform: translateY(-5px) scale(1.01);
-            box-shadow: 
-                0 15px 30px rgba(59, 130, 246, 0.15),
-                0 0 40px rgba(59, 130, 246, 0.1);
-        }
-        
-        .nav-link {
-            position: relative;
-            transition: all 0.3s ease;
-            padding: 8px 16px;
-            border-radius: 8px;
-        }
-        
-        .nav-link::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, rgba(59, 130, 246, 0.1), rgba(148, 163, 184, 0.1));
-            border-radius: 8px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .nav-link:hover::before {
-            opacity: 1;
-        }
-        
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 50%;
-            background: linear-gradient(90deg, #3b82f6, #94a3b8);
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
-        }
-        
-        .nav-link:hover::after {
-            width: 80%;
-        }
-        
-        .scroll-indicator {
-            animation: bounce 2s infinite;
-        }
-        
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-15px); }
-            60% { transform: translateY(-8px); }
-        }
-        
-        .hologram-effect {
-            position: relative;
-            background: linear-gradient(45deg, rgba(59, 130, 246, 0.05), rgba(148, 163, 184, 0.05));
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            backdrop-filter: blur(10px);
-        }
-        
-        .neon-text {
-            text-shadow: 
-                0 0 5px currentColor,
-                0 0 10px currentColor,
-                0 0 15px currentColor;
-            animation: neonFlicker 2s ease-in-out infinite alternate;
-        }
-        
-        @keyframes neonFlicker {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.9; }
-        }
-        
-        .ai-agent-card {
-            background: linear-gradient(145deg, 
-                rgba(15, 23, 42, 0.9), 
-                rgba(59, 130, 246, 0.05), 
-                rgba(15, 23, 42, 0.9));
-            border: 1px solid rgba(148, 163, 184, 0.2);
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(20px);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .ai-agent-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, 
-                rgba(59, 130, 246, 0.1), rgba(59, 130, 246, 0.05));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: -1;
-        }
-        
-        .ai-agent-card:hover::before {
-            opacity: 1;
-        }
-        
-        .ai-agent-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            border-color: rgba(59, 130, 246, 0.4);
-            box-shadow: 
-                0 20px 40px rgba(59, 130, 246, 0.15),
-                0 0 60px rgba(59, 130, 246, 0.1);
-        }
-        
-        .holographic-text {
-            background: linear-gradient(45deg, 
-                #ffffff, #e5e7eb, #3b82f6, #ffffff);
-            background-size: 400% 400%;
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: holographicShift 6s ease infinite;
-            text-shadow: 
-                0 0 10px rgba(59, 130, 246, 0.3),
-                0 0 20px rgba(59, 130, 246, 0.2);
-        }
-        
-        @keyframes holographicShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-        
-        .ai-brain {
-            position: relative;
-            width: 200px;
-            height: 200px;
-            margin: 0 auto;
-        }
-        
-        .brain-node {
-            position: absolute;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: radial-gradient(circle, 
-                rgba(59, 130, 246, 1), 
-                rgba(59, 130, 246, 0.3));
-            animation: brainPulse 2s ease-in-out infinite;
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
-        }
-        
-        @keyframes brainPulse {
-            0%, 100% { transform: scale(1); opacity: 0.8; }
-            50% { transform: scale(1.5); opacity: 1; }
-        }
-        
-        .brain-connection {
-            position: absolute;
-            height: 2px;
-            background: linear-gradient(90deg, 
-                rgba(59, 130, 246, 0.8), 
-                rgba(148, 163, 184, 0.6), 
-                rgba(59, 130, 246, 0.8));
-            animation: connectionFlow 3s linear infinite;
-            transform-origin: left center;
-        }
-        
-        @keyframes connectionFlow {
-            0% { transform: scaleX(0); opacity: 0; }
-            20% { opacity: 1; }
-            100% { transform: scaleX(1); opacity: 0.3; }
-        }
-        
-        .quantum-particles {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            pointer-events: none;
-        }
-        
-        .quantum-particle {
-            position: absolute;
-            width: 3px;
-            height: 3px;
-            background: radial-gradient(circle, 
-                rgba(59, 130, 246, 1), 
-                transparent);
-            border-radius: 50%;
-            animation: quantumFloat 15s linear infinite;
-        }
-        
-        @keyframes quantumFloat {
-            0% {
-                transform: translate(0, 100vh) scale(0);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-                transform: scale(1);
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translate(200px, -100px) scale(0);
-                opacity: 0;
-            }
-        }
-        
-        .ai-stats {
-            background: linear-gradient(135deg, 
-                rgba(15, 23, 42, 0.9), 
-                rgba(59, 130, 246, 0.1), 
-                rgba(15, 23, 42, 0.9));
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            backdrop-filter: blur(15px);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .ai-stats::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, 
-                transparent, 
-                rgba(59, 130, 246, 0.2), 
-                transparent);
-            animation: statsScan 4s linear infinite;
-        }
-        
-        @keyframes statsScan {
-            0% { left: -100%; }
-            100% { left: 100%; }
-        }
-        
-        .agent-showcase {
-            background: linear-gradient(145deg, 
-                rgba(15, 23, 42, 0.95), 
-                rgba(59, 130, 246, 0.05), 
-                rgba(15, 23, 42, 0.95));
-            border: 2px solid transparent;
-            background-clip: padding-box;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .agent-showcase::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, 
-                #3b82f6, #94a3b8, #3b82f6, #94a3b8);
-            background-size: 300% 300%;
-            animation: showcaseGlow 10s ease infinite;
-            z-index: -1;
-        }
-        
-        @keyframes showcaseGlow {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lola — Mude de vida em 90 dias</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="description" content="Lola: sua parceira no WhatsApp. Dieta personalizada, motivação diária e acesso imediato após o pagamento. Estilo Netflix: preto e vermelho, lindo e de alta conversão.">
+  <style>
+    /* Visual refinado e responsivo para a mídia do destaque (sem cortes) */
+    .hero-media { position: relative; width: 100%; border-radius: 1rem; overflow: hidden; background: #000; }
+    .hero-media::before { content: none; }
+    @media (max-width: 640px) { .hero-media::before { content: none; } }
+    .hero-media > img, .hero-media > .fallback { position: relative; display: block; width: 100%; height: auto; object-fit: contain; background: #000; }
+    .glow { box-shadow: 0 12px 30px rgba(0,0,0,0.25), 0 8px 18px rgba(0,0,0,0.18); }
+  </style>
 
-        .loading-bar {
-            width: 100%;
-            height: 4px;
-            background: rgba(59, 130, 246, 0.2);
-            border-radius: 2px;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .loading-bar::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 30%;
-            background: linear-gradient(90deg, transparent, #3b82f6, #94a3b8, transparent);
-            animation: loadingMove 2s ease-in-out infinite;
-        }
-        
-        @keyframes loadingMove {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(400%); }
-        }
-
-        .comparison-card {
-            background: linear-gradient(145deg, rgba(15, 23, 42, 0.8), rgba(59, 130, 246, 0.05));
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            backdrop-filter: blur(15px);
-            transition: all 0.3s ease;
-        }
-
-        .comparison-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
-        }
-
-        .sector-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(45deg, #475569, #64748b);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            margin: 0 auto 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .sector-icon:hover {
-            transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4);
-        }
-    </style>
+  <!-- Meta Pixel (Facebook) -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n; n.loaded=!0; n.version='2.0'; n.queue=[]; t=b.createElement(e); t.async=!0;
+    t.src='https://connect.facebook.net/en_US/fbevents.js'; s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script');
+    fbq('init','1788063742589202');
+    fbq('track','PageView');
+    // API usada pelos botões do site para acionar eventos
+    window.trackEvent = function(event, data){
+      try { if(event === 'InitiateCheckout'){ fbq('track','InitiateCheckout', data || {}); } } catch(e){}
+    };
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1788063742589202&ev=PageView&noscript=1"/>
+  </noscript>
 </head>
-<body class="gradient-bg text-white overflow-x-hidden" style="overflow-y: auto; height: auto;">
-    <!-- Minimal Tech Effects -->
-    <div class="quantum-particles">
-        <div class="quantum-particle" style="left: 20%; animation-delay: 0s; opacity: 0.3;"></div>
-        <div class="quantum-particle" style="left: 60%; animation-delay: 3s; opacity: 0.3;"></div>
-        <div class="quantum-particle" style="left: 80%; animation-delay: 6s; opacity: 0.3;"></div>
+<body class="min-h-screen text-white bg-black overflow-x-hidden">
+  <!-- Faixa de anúncio -->
+  <div class="w-full bg-red-600/20 border-b border-red-500/30">
+    <div class="max-w-7xl mx-auto px-6 py-2 flex items-center justify-between gap-4 text-sm">
+      <div class="flex items-center gap-2">
+        <span class="text-xs bg-red-600 text-white font-bold px-2 py-1 rounded">Oferta ativa</span>
+        <span class="text-white/80">Acesso imediato ao WhatsApp após o pagamento.</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="text-white/70">Preço promocional termina em</span>
+        <span id="timer" class="font-semibold text-red-400">--:--:--</span>
+      </div>
     </div>
+  </div>
 
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 backdrop-filter backdrop-blur-xl bg-slate-900 bg-opacity-40 border-b border-blue-500 border-opacity-30 hologram-effect">
-        <div class="loading-bar"></div>
-        <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center py-3">
-                <div class="flex items-center space-x-2">
-                    <div class="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-xl overflow-hidden pulse-glow">
-                        <img src="https://i.postimg.cc/ZWRTVZHw/logo.png" alt="Next Intellectus Logo" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <div class="w-full h-full bg-gradient-to-r from-blue-500 via-slate-500 to-blue-500 rounded-xl flex items-center justify-center tech-font" style="display: none;">
-                            <span class="text-white font-bold text-xs sm:text-sm md:text-lg neon-text">NI</span>
-                        </div>
-                    </div>
-                    <div>
-                        <span class="text-sm sm:text-lg md:text-xl font-bold bg-gradient-to-r from-blue-400 via-slate-400 to-blue-400 bg-clip-text text-transparent tech-font neon-text">Next Intellectus</span>
-                        <div class="text-xs text-blue-400 opacity-75 tech-font hidden sm:block">AGENTES DE IA</div>
-                    </div>
-                </div>
-                <div class="hidden lg:flex space-x-2">
-                    <a href="#home" class="nav-link text-gray-300 hover:text-white tech-font text-sm">INÍCIO</a>
-                    <a href="#agents" class="nav-link text-gray-300 hover:text-white tech-font text-sm">AGENTES</a>
-                    <a href="#sectors" class="nav-link text-gray-300 hover:text-white tech-font text-sm">SETORES</a>
-                    <a href="#contact" class="nav-link text-gray-300 hover:text-white tech-font text-sm">CONTATO</a>
-                </div>
-                <a href="https://wa.me/5511921269957?text=Olá! Gostaria de ver uma demonstração dos agentes de IA" target="_blank" class="bg-blue-600 hover:bg-blue-700 px-3 py-2 sm:px-4 sm:py-2 md:px-6 md:py-3 rounded-lg font-semibold tech-font text-white transform hover:scale-105 transition-all duration-300 border border-blue-500 text-xs sm:text-sm md:text-base">
-                    VER DEMO
-                </a>
-            </div>
+  <!-- Header -->
+  <header class="sticky top-0 z-40 bg-black/70 backdrop-blur border-b border-red-500/20">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3">
+        <!-- Mascote -->
+        <svg width="36" height="36" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="64" y2="64">
+              <stop stop-color="#ef4444"/><stop offset="1" stop-color="#dc2626"/>
+            </linearGradient>
+          </defs>
+          <circle cx="32" cy="32" r="30" fill="url(#g1)" opacity="0.9"/>
+          <path d="M20 34c0-6 5-11 12-11s12 5 12 11" stroke="white" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="26" cy="30" r="2.5" fill="#fff"/><circle cx="38" cy="30" r="2.5" fill="#fff"/>
+          <path d="M22 44c4 3 16 3 20 0" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+        <span class="font-semibold tracking-tight text-lg">Lola Nutri</span>
+        <span class="ml-3 text-[11px] bg-white text-slate-900 px-2 py-1 rounded-full font-bold">+2.000 clientes</span>
+        <span class="hidden sm:inline text-xs text-white/60 ml-3">— desenvolvida por <span class="font-semibold">Next Intellectus</span></span>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="#gancho" class="hover:text-red-400 transition">Início</a>
+        <a href="#solucao" class="hover:text-red-400 transition">Solução</a>
+        <a href="#beneficios" class="hover:text-red-400 transition">Benefícios</a>
+        <a href="#oferta" class="hover:text-red-400 transition">Oferta</a>
+        <a href="#provas" class="hover:text-red-400 transition">Depoimentos</a>
+        <a href="#faq" class="hover:text-red-400 transition">FAQ</a>
+      </nav>
+      <a href="https://www.asaas.com/c/qni1ku7sij3v8ef6" target="_blank" rel="noopener" class="px-4 py-2 rounded-full bg-red-600 hover:bg-red-700 transition font-medium glow" onclick="trackEvent('InitiateCheckout',{source:'header'})">
+        QUERO A LOLA AGORA
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero / Gancho -->
+  <section id="gancho" class="relative bg-gradient-to-b from-black to-zinc-950">
+    <div class="max-w-7xl mx-auto px-6 py-16 lg:py-24 grid lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight">
+          Você tenta começar uma jornada de saúde, mas se sente perdida e sozinha. O que está faltando não é um plano de dieta. É uma parceira.
+        </h1>
+        <p class="mt-4 text-white/90 text-xl font-semibold">
+          Conheça a Lola. A IA que entende, motiva e te guia a cada passo para você não desistir de novo.
+        </p>
+        <ul class="mt-6 grid gap-3 text-white/90">
+          <li class="flex items-center gap-2"><span>✅</span> Mude de vida em 90 dias com apoio real</li>
+          <li class="flex items-center gap-2"><span>✅</span> Conquiste o corpo dos seus sonhos sem loucuras</li>
+          <li class="flex items-center gap-2"><span>✅</span> Chegue ao final do ano com a autoestima lá em cima</li>
+          <li class="flex items-center gap-2"><span>✅</span> Acompanhamento diário</li>
+          <li class="flex items-center gap-2"><span>✅</span> Dieta personalizada</li>
+          <li class="flex items-center gap-2"><span>✅</span> Sem erros de macronutrientes</li>
+        </ul>
+        <div class="mt-8 flex flex-wrap items-center gap-4">
+          <a href="https://www.asaas.com/c/qni1ku7sij3v8ef6" target="_blank" rel="noopener" onclick="trackEvent('InitiateCheckout',{source:'hero'})" class="px-7 py-3 rounded-full bg-red-600 hover:bg-red-700 font-bold transition glow">
+            COMEÇAR AGORA
+          </a>
         </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="home" class="min-h-screen flex items-center justify-center neural-network tech-grid relative">
-        <!-- Matrix Background -->
-        <div class="matrix-bg"></div>
-        
-        <!-- Advanced Animated Background Elements -->
-        <div class="absolute inset-0">
-            <div class="absolute top-20 left-10 w-3 h-3 bg-blue-500 rounded-full pulse-glow"></div>
-            <div class="absolute top-40 right-20 w-4 h-4 bg-slate-500 rounded-full pulse-glow" style="animation-delay: 0.5s;"></div>
-            <div class="absolute bottom-40 left-1/4 w-3 h-3 bg-blue-400 rounded-full pulse-glow" style="animation-delay: 1s;"></div>
-            <div class="absolute bottom-20 right-1/3 w-4 h-4 bg-slate-400 rounded-full pulse-glow" style="animation-delay: 1.5s;"></div>
-            <div class="absolute top-1/3 left-1/5 w-2 h-2 bg-blue-400 rounded-full pulse-glow" style="animation-delay: 2s;"></div>
-            <div class="absolute top-2/3 right-1/5 w-3 h-3 bg-slate-500 rounded-full pulse-glow" style="animation-delay: 2.5s;"></div>
+        <div class="mt-5 flex flex-wrap items-center gap-3 text-xs text-white/70">
+          <span class="flex items-center gap-2">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 3l9 4.5v9L12 21 3 16.5v-9L12 3z" stroke="white" opacity=".6"/></svg>
+            Pagamento 100% seguro
+          </span>
+          <span class="flex items-center gap-2">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="white" opacity=".6" stroke-width="2"/></svg>
+            Acesso imediato no WhatsApp
+          </span>
+          <span class="flex items-center gap-2">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 8v5l3 2" stroke="white" opacity=".6" stroke-width="2"/></svg>
+            Resultados reais com constância
+          </span>
         </div>
-        
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-            <!-- Advanced AI Agent Visualization -->
-            <div class="floating mb-12 relative">
-                <div class="ai-brain">
-                    <!-- Brain Nodes -->
-                    <div class="brain-node" style="top: 20%; left: 50%; animation-delay: 0s;"></div>
-                    <div class="brain-node" style="top: 40%; left: 20%; animation-delay: 0.3s;"></div>
-                    <div class="brain-node" style="top: 40%; left: 80%; animation-delay: 0.6s;"></div>
-                    <div class="brain-node" style="top: 60%; left: 35%; animation-delay: 0.9s;"></div>
-                    <div class="brain-node" style="top: 60%; left: 65%; animation-delay: 1.2s;"></div>
-                    <div class="brain-node" style="top: 80%; left: 50%; animation-delay: 1.5s;"></div>
-                    <div class="brain-node" style="top: 30%; left: 40%; animation-delay: 0.2s;"></div>
-                    <div class="brain-node" style="top: 30%; left: 60%; animation-delay: 0.8s;"></div>
-                    <div class="brain-node" style="top: 70%; left: 25%; animation-delay: 1.1s;"></div>
-                    <div class="brain-node" style="top: 70%; left: 75%; animation-delay: 1.4s;"></div>
-                    
-                    <!-- Brain Connections -->
-                    <div class="brain-connection" style="top: 25%; left: 45%; width: 60px; transform: rotate(45deg); animation-delay: 0s;"></div>
-                    <div class="brain-connection" style="top: 35%; left: 25%; width: 80px; transform: rotate(-30deg); animation-delay: 0.5s;"></div>
-                    <div class="brain-connection" style="top: 45%; left: 60%; width: 70px; transform: rotate(60deg); animation-delay: 1s;"></div>
-                    <div class="brain-connection" style="top: 55%; left: 30%; width: 90px; transform: rotate(15deg); animation-delay: 1.5s;"></div>
-                    <div class="brain-connection" style="top: 65%; left: 45%; width: 75px; transform: rotate(-45deg); animation-delay: 2s;"></div>
-                    <div class="brain-connection" style="top: 75%; left: 35%; width: 85px; transform: rotate(30deg); animation-delay: 2.5s;"></div>
-                    
-                    <!-- Central AI Agent Core -->
-                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 via-slate-500 to-blue-500 pulse-glow">
-                        <div class="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400 via-slate-400 to-blue-400 animate-spin" style="animation-duration: 10s;"></div>
-                        <div class="absolute inset-2 rounded-full bg-white flex items-center justify-center">
-                            <span class="text-black font-bold text-sm tech-font">🤖</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Enhanced Typography -->
-            <div class="mb-6 sm:mb-8">
-                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-8xl font-bold mb-3 sm:mb-4 holographic-text tech-font neon-text leading-tight">
-                    AGENTES DE IA
-                </h1>
-                <h1 class="text-xl sm:text-2xl md:text-3xl lg:text-6xl font-bold mb-4 sm:mb-6 holographic-text tech-font leading-tight">
-                    SUPER INTELIGENTES
-                </h1>
-            </div>
-            
-            <h2 class="text-lg sm:text-xl md:text-2xl lg:text-5xl font-bold mb-6 sm:mb-8 holographic-text tech-font neon-text leading-tight">
-                1 ROBÔ = 10 FUNCIONÁRIOS
-            </h2>
-            
-            <!-- AI Agent Stats Display -->
-            <div class="ai-stats rounded-xl p-3 sm:p-4 md:p-6 mb-6 sm:mb-8 max-w-5xl mx-auto">
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6 text-center">
-                    <div>
-                        <div class="text-xl sm:text-2xl md:text-4xl font-bold text-blue-400 tech-font holographic-text">24/7</div>
-                        <div class="text-xs sm:text-xs md:text-sm text-gray-300 tech-font">SEM DESCANSO</div>
-                    </div>
-                    <div>
-                        <div class="text-xl sm:text-2xl md:text-4xl font-bold text-slate-400 tech-font holographic-text">10x</div>
-                        <div class="text-xs sm:text-xs md:text-sm text-gray-300 tech-font">MAIS PRODUTIVO</div>
-                    </div>
-                    <div>
-                        <div class="text-xl sm:text-2xl md:text-4xl font-bold text-blue-400 tech-font holographic-text">0%</div>
-                        <div class="text-xs sm:text-xs md:text-sm text-gray-300 tech-font">MUDANÇA HUMOR</div>
-                    </div>
-                    <div>
-                        <div class="text-xl sm:text-2xl md:text-4xl font-bold text-green-400 tech-font holographic-text">-70%</div>
-                        <div class="text-xs sm:text-xs md:text-sm text-gray-300 tech-font">CUSTOS</div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Enhanced description with tech styling -->
-            <div class="hologram-effect rounded-xl p-3 sm:p-4 md:p-8 mb-8 sm:mb-12 max-w-6xl mx-auto">
-                <p class="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-200 leading-relaxed mb-4 sm:mb-6">
-                    Criamos <span class="text-blue-400 font-semibold neon-text">agentes de IA super inteligentes</span> que 
-                    <span class="text-slate-400 font-semibold neon-text">atendem clientes</span>, 
-                    <span class="text-blue-400 font-semibold neon-text">agendam reuniões</span>, 
-                    <span class="text-green-400 font-semibold neon-text">fazem vendas</span> e 
-                    <span class="text-blue-400 font-semibold neon-text">resolvem problemas</span> - 
-                    tudo que um humano faz, mas <span class="text-slate-400 font-bold neon-text">24 horas por dia</span>!
-                </p>
-                <div class="mt-4 sm:mt-6 grid grid-cols-2 sm:grid-cols-4 md:flex md:justify-center gap-2 sm:gap-3 md:space-x-6 text-xs sm:text-xs md:text-sm tech-font text-gray-400">
-                    <span class="flex items-center"><span class="w-2 h-2 bg-blue-500 rounded-full mr-1 sm:mr-2 pulse-glow"></span>ATENDIMENTO</span>
-                    <span class="flex items-center"><span class="w-2 h-2 bg-slate-500 rounded-full mr-1 sm:mr-2 pulse-glow"></span>VENDAS</span>
-                    <span class="flex items-center"><span class="w-2 h-2 bg-blue-500 rounded-full mr-1 sm:mr-2 pulse-glow"></span>AGENDAMENTO</span>
-                    <span class="flex items-center"><span class="w-2 h-2 bg-green-500 rounded-full mr-1 sm:mr-2 pulse-glow"></span>SUPORTE</span>
-                </div>
-            </div>
-            
-            <!-- Enhanced CTA buttons -->
-            <div class="flex justify-center items-center mb-12 sm:mb-16 px-4">
-                <a href="https://wa.me/5511921269957?text=Olá! Gostaria de ver uma demonstração dos agentes de IA" target="_blank" class="bg-blue-600 hover:bg-blue-700 px-6 sm:px-8 md:px-10 py-3 sm:py-4 rounded-xl text-base sm:text-lg md:text-xl font-bold tech-font text-white transform hover:scale-105 transition-all duration-300 border border-blue-500 text-center">
-                    VER DEMONSTRAÇÃO
-                </a>
-            </div>
-            
-            <!-- Enhanced scroll indicator -->
-            <div class="scroll-indicator">
-                <div class="flex flex-col items-center">
-                    <div class="text-blue-400 tech-font text-sm mb-2 opacity-75">CONHEÇA NOSSOS AGENTES</div>
-                    <svg class="w-8 h-8 text-blue-400 glow-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
-                    </svg>
-                </div>
-            </div>
+      </div>
+
+      <!-- Destaque com a IMAGEM (link direto) -->
+      <div class="rounded-3xl p-5 bg-zinc-900/70 border border-red-600/20 glow">
+        <div class="flex items-center justify-between">
+          <h3 class="text-xl font-semibold">Quando a jornada é solitária, tudo fica mais difícil…</h3>
         </div>
-    </section>
-
-    <!-- AI Agents Showcase Section -->
-    <section id="agents" class="py-20 relative neural-network">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12 md:mb-20">
-                <div class="inline-block mb-6">
-                    <span class="tech-font text-blue-400 text-xs md:text-sm tracking-widest opacity-75">NOSSOS AGENTES DE IA</span>
-                    <div class="w-full h-px bg-gradient-to-r from-transparent via-blue-500 to-transparent mt-2"></div>
-                </div>
-                <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-6 md:mb-8 holographic-text tech-font neon-text">
-                    SUPER AGENTES
-                </h2>
-                <div class="hologram-effect rounded-xl p-4 md:p-6 max-w-4xl mx-auto">
-                    <p class="text-lg md:text-xl text-gray-200 leading-relaxed">
-                        Cada agente é <span class="text-blue-400 font-semibold holographic-text">especializado</span> e 
-                        <span class="text-slate-400 font-semibold holographic-text">treinado</span> para seu setor específico
-                    </p>
-                </div>
-            </div>
-            
-            <!-- AI Agents Grid -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-12 md:mb-20">
-                <!-- Atendimento Agent -->
-                <div class="ai-agent-card rounded-2xl p-4 sm:p-6 md:p-8 text-center group">
-                    <div class="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-gradient-to-r from-slate-700 to-slate-600 rounded-2xl mx-auto mb-3 sm:mb-4 md:mb-6 flex items-center justify-center">
-                        <svg class="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-3 md:mb-4 text-white tech-font">AGENTE ATENDIMENTO</h3>
-                    <p class="text-gray-300 mb-3 sm:mb-4 md:mb-6 leading-relaxed text-sm md:text-base">Atende clientes com <span class="text-blue-400 font-bold">perfeição humana</span>, resolve dúvidas e direciona demandas</p>
-                    <div class="flex justify-center space-x-1 sm:space-x-2 mb-3 sm:mb-4 md:mb-6 text-xs tech-font text-gray-400">
-                        <span class="bg-slate-700/30 px-2 py-1 rounded">CHAT</span>
-                        <span class="bg-slate-700/30 px-2 py-1 rounded">VOZ</span>
-                        <span class="bg-blue-500/20 px-2 py-1 rounded">24/7</span>
-                    </div>
-                    <div class="text-xs sm:text-xs md:text-sm text-gray-400 mb-3 sm:mb-4">
-                        ✅ Responde instantaneamente<br>
-                        ✅ Nunca perde a paciência<br>
-                        ✅ Lembra de tudo sobre o cliente
-                    </div>
-                </div>
-                
-                <!-- Vendas Agent -->
-                <div class="ai-agent-card rounded-2xl p-4 sm:p-6 md:p-8 text-center group">
-                    <div class="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-gradient-to-r from-slate-700 to-slate-600 rounded-2xl mx-auto mb-3 sm:mb-4 md:mb-6 flex items-center justify-center">
-                        <svg class="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-3 md:mb-4 text-white tech-font">AGENTE VENDAS</h3>
-                    <p class="text-gray-300 mb-3 sm:mb-4 md:mb-6 leading-relaxed text-sm md:text-base">Vende com <span class="text-blue-400 font-bold">técnicas avançadas</span>, qualifica leads e fecha negócios</p>
-                    <div class="flex justify-center space-x-1 sm:space-x-2 mb-3 sm:mb-4 md:mb-6 text-xs tech-font text-gray-400">
-                        <span class="bg-slate-700/30 px-2 py-1 rounded">LEADS</span>
-                        <span class="bg-slate-700/30 px-2 py-1 rounded">VENDAS</span>
-                        <span class="bg-blue-500/20 px-2 py-1 rounded">CRM</span>
-                    </div>
-                    <div class="text-xs sm:text-xs md:text-sm text-gray-400 mb-3 sm:mb-4">
-                        ✅ Qualifica leads automaticamente<br>
-                        ✅ Aplica técnicas de persuasão<br>
-                        ✅ Nunca desiste de uma venda
-                    </div>
-                </div>
-                
-                <!-- Agendamento Agent -->
-                <div class="ai-agent-card rounded-2xl p-4 sm:p-6 md:p-8 text-center group">
-                    <div class="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-gradient-to-r from-slate-700 to-slate-600 rounded-2xl mx-auto mb-3 sm:mb-4 md:mb-6 flex items-center justify-center">
-                        <svg class="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-3 md:mb-4 text-white tech-font">AGENTE AGENDAMENTO</h3>
-                    <p class="text-gray-300 mb-3 sm:mb-4 md:mb-6 leading-relaxed text-sm md:text-base">Agenda consultas com <span class="text-blue-400 font-bold">precisão total</span>, gerencia calendários e confirma horários</p>
-                    <div class="flex justify-center space-x-1 sm:space-x-2 mb-3 sm:mb-4 md:mb-6 text-xs tech-font text-gray-400">
-                        <span class="bg-slate-700/30 px-2 py-1 rounded">AGENDA</span>
-                        <span class="bg-slate-700/30 px-2 py-1 rounded">CONFIRMA</span>
-                        <span class="bg-blue-500/20 px-2 py-1 rounded">LEMBRA</span>
-                    </div>
-                    <div class="text-xs sm:text-xs md:text-sm text-gray-400 mb-3 sm:mb-4">
-                        ✅ Sincroniza múltiplas agendas<br>
-                        ✅ Confirma automaticamente<br>
-                        ✅ Reagenda quando necessário
-                    </div>
-                </div>
-                
-                <!-- Suporte Agent -->
-                <div class="ai-agent-card rounded-2xl p-4 sm:p-6 md:p-8 text-center group">
-                    <div class="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-gradient-to-r from-slate-700 to-slate-600 rounded-2xl mx-auto mb-3 sm:mb-4 md:mb-6 flex items-center justify-center">
-                        <svg class="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-3 md:mb-4 text-white tech-font">AGENTE SUPORTE</h3>
-                    <p class="text-gray-300 mb-3 sm:mb-4 md:mb-6 leading-relaxed text-sm md:text-base">Resolve problemas com <span class="text-blue-400 font-bold">expertise técnica</span>, diagnostica e soluciona questões</p>
-                    <div class="flex justify-center space-x-1 sm:space-x-2 mb-3 sm:mb-4 md:mb-6 text-xs tech-font text-gray-400">
-                        <span class="bg-slate-700/30 px-1 sm:px-2 py-1 rounded text-xs">DIAGNÓSTICO</span>
-                        <span class="bg-slate-700/30 px-1 sm:px-2 py-1 rounded text-xs">SOLUÇÃO</span>
-                        <span class="bg-blue-500/20 px-1 sm:px-2 py-1 rounded text-xs">FOLLOW-UP</span>
-                    </div>
-                    <div class="text-xs sm:text-xs md:text-sm text-gray-400 mb-3 sm:mb-4">
-                        ✅ Acesso a base de conhecimento<br>
-                        ✅ Escalona casos complexos<br>
-                        ✅ Acompanha até a resolução
-                    </div>
-                </div>
-                
-                <!-- Recepção Agent -->
-                <div class="ai-agent-card rounded-2xl p-4 sm:p-6 md:p-8 text-center group">
-                    <div class="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-gradient-to-r from-slate-700 to-slate-600 rounded-2xl mx-auto mb-3 sm:mb-4 md:mb-6 flex items-center justify-center">
-                        <svg class="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-3 md:mb-4 text-white tech-font">AGENTE RECEPÇÃO</h3>
-                    <p class="text-gray-300 mb-3 sm:mb-4 md:mb-6 leading-relaxed text-sm md:text-base">Recepciona com <span class="text-blue-400 font-bold">cordialidade perfeita</span>, direciona visitantes e gerencia fluxo</p>
-                    <div class="flex justify-center space-x-1 sm:space-x-2 mb-3 sm:mb-4 md:mb-6 text-xs tech-font text-gray-400">
-                        <span class="bg-slate-700/30 px-1 sm:px-2 py-1 rounded text-xs">RECEPÇÃO</span>
-                        <span class="bg-slate-700/30 px-1 sm:px-2 py-1 rounded text-xs">DIRECIONAMENTO</span>
-                        <span class="bg-blue-500/20 px-1 sm:px-2 py-1 rounded text-xs">CONTROLE</span>
-                    </div>
-                    <div class="text-xs sm:text-xs md:text-sm text-gray-400 mb-3 sm:mb-4">
-                        ✅ Sempre educado e profissional<br>
-                        ✅ Conhece toda a empresa<br>
-                        ✅ Gerencia múltiplas demandas
-                    </div>
-                </div>
-                
-                <!-- Personalizado Agent -->
-                <div class="ai-agent-card rounded-2xl p-4 sm:p-6 md:p-8 text-center group">
-                    <div class="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-gradient-to-r from-blue-600 to-blue-500 rounded-2xl mx-auto mb-3 sm:mb-4 md:mb-6 flex items-center justify-center">
-                        <svg class="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-3 md:mb-4 text-white tech-font">AGENTE PERSONALIZADO</h3>
-                    <p class="text-gray-300 mb-3 sm:mb-4 md:mb-6 leading-relaxed text-sm md:text-base">Criado <span class="text-blue-400 font-bold">sob medida</span> para suas necessidades específicas e processos únicos</p>
-                    <div class="flex justify-center space-x-1 sm:space-x-2 mb-3 sm:mb-4 md:mb-6 text-xs tech-font text-gray-400">
-                        <span class="bg-blue-500/20 px-2 py-1 rounded">CUSTOM</span>
-                        <span class="bg-blue-500/20 px-2 py-1 rounded">ÚNICO</span>
-                        <span class="bg-blue-500/20 px-2 py-1 rounded">SEU</span>
-                    </div>
-                    <div class="text-xs sm:text-xs md:text-sm text-gray-400 mb-3 sm:mb-4">
-                        ✅ Desenvolvido para você<br>
-                        ✅ Integra com seus sistemas<br>
-                        ✅ Evolui com seu negócio
-                    </div>
-                </div>
-            </div>
+        <p class="text-white/80 text-sm mt-2">“Quantas vezes você disse ‘agora vai’ e a rotina te puxou de volta?”</p>
+        <div class="mt-5 hero-media border border-white/10">
+          <img
+            src="https://i.postimg.cc/5NVrbfcM/Lucid-Origin-uma-mulher-personal-trainer-ultrarealista-na-acad-3.jpg"
+            alt="Mulher determinada focada em saúde e treino"
+            onerror="this.src=''; this.alt='Imagem indisponível'; this.style.display='none'; this.parentElement.insertAdjacentHTML('beforeend','<div class=&quot;fallback flex items-center justify-center text-white/70&quot;>Imagem indisponível</div>');"
+          />
+          <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(800px 300px at 10% 10%, rgba(239,68,68,0.20), transparent);"></div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- Comparison Section -->
-    <section class="py-20 neural-network">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold mb-8 holographic-text tech-font neon-text leading-tight">
-                    AGENTE IA vs FUNCIONÁRIO
-                </h2>
-                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
-                    Veja a diferença revolucionária entre nossos agentes de IA e funcionários tradicionais
-                </p>
-            </div>
-            
-            <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-                <!-- Funcionário Humano -->
-                <div class="comparison-card rounded-2xl p-8">
-                    <div class="text-center mb-8">
-                        <div class="w-20 h-20 bg-gradient-to-r from-slate-500 to-slate-600 rounded-2xl mx-auto mb-4 flex items-center justify-center">
-                            <span class="text-3xl">👨‍💼</span>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white tech-font">FUNCIONÁRIO HUMANO</h3>
-                    </div>
-                    
-                    <div class="space-y-4 text-gray-300">
-                        <div class="flex items-center">
-                            <span class="text-red-400 mr-3">❌</span>
-                            <span>Trabalha 8 horas por dia</span>
-                        </div>
-                        <div class="flex items-center">
-                            <span class="text-red-400 mr-3">❌</span>
-                            <span>Precisa de férias e descanso</span>
-                        </div>
-                        <div class="flex items-center">
-                            <span class="text-red-400 mr-3">❌</span>
-                            <span>Pode ter mudanças de humor</span>
-                        </div>
-                        <div class="flex items-center">
-                            <span class="text-red-400 mr-3">❌</span>
-                            <span>Esquece informações</span>
-                        </div>
-                        <div class="flex items-center">
-                            <span class="text-red-400 mr-3">❌</span>
-                            <span>Salário + benefícios + encargos</span>
-                        </div>
-                        <div class="flex items-center">
-                            <span class="text-red-400 mr-3">❌</span>
-                            <span>Pode ficar doente</span>
-                        </div>
-                        <div class="flex items-center">
-                            <span class="text-red-400 mr-3">❌</span>
-                            <span>Atende 1 cliente por vez</span>
-                        </div>
-                    </div>
-                    
-                    <div class="mt-8 text-center">
-                        <div class="text-2xl md:text-3xl font-bold text-red-400 tech-font">R$ 5.000+/mês</div>
-                        <div class="text-xs md:text-sm text-gray-400">Por funcionário</div>
-                    </div>
-                </div>
-                
-                <!-- Agente IA -->
-                <div class="comparison-card rounded-2xl p-8 border-2 border-blue-500 relative overflow-hidden">
-                    <div class="absolute top-0 right-0 bg-gradient-to-l from-blue-500 to-transparent px-4 py-2 text-xs font-bold tech-font">
-                        RECOMENDADO
-                    </div>
-                    
-                    <div class="text-center mb-8">
-                        <div class="w-20 h-20 bg-gradient-to-r from-blue-500 to-slate-600 rounded-2xl mx-auto mb-4 flex items-center justify-center pulse-glow">
-                            <span class="text-3xl">🤖</span>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white tech-font holographic-text">AGENTE DE IA</h3>
-                    </div>
-                    
-                    <div class="space-y-4 text-gray-300">
-                        <div class="flex items-center">
-                            <span class="text-green-400 mr-3">✅</span>
-                            <span>Trabalha 24 horas por dia</span>
-                        </div>
-                        <div class="flex items-center">
-                            <span class="text-green-400 mr-3">✅</span>
-                            <span>Nunca precisa de descanso</span>
-                        </div>
-                        <div class="flex items-center">
-                            <span class="text-green-400 mr-3">✅</span>
-                            <span>Sempre no mesmo padrão</span>
-                        </div>
-                        <div class="flex items-center">
-                            <span class="text-green-400 mr-3">✅</span>
-                            <span>Lembra de tudo perfeitamente</span>
-                        </div>
-                        <div class="flex items-center">
-                            <span class="text-green-400 mr-3">✅</span>
-                            <span>Custo fixo mensal baixo</span>
-                        </div>
-                        <div class="flex items-center">
-                            <span class="text-green-400 mr-3">✅</span>
-                            <span>Nunca fica doente</span>
-                        </div>
-                        <div class="flex items-center">
-                            <span class="text-green-400 mr-3">✅</span>
-                            <span>Atende milhares simultaneamente</span>
-                        </div>
-                    </div>
-                    
-                    <div class="mt-8 text-center">
-                        <div class="text-2xl md:text-3xl font-bold text-green-400 tech-font">ATÉ 90% MAIS BARATO</div>
-                        <div class="text-xs md:text-sm text-gray-400">Que funcionários tradicionais</div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- ROI Calculator -->
-            <div class="mt-16 text-center">
-                <div class="agent-showcase rounded-2xl p-8 max-w-4xl mx-auto">
-                    <h3 class="text-3xl font-bold mb-6 text-white tech-font holographic-text">ECONOMIA ANUAL</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-                        <div>
-                            <div class="text-2xl md:text-4xl font-bold text-red-400 tech-font mb-2">R$ 60.000</div>
-                            <div class="text-gray-300 text-sm md:text-base">1 Funcionário/Ano</div>
-                        </div>
-                        <div>
-                            <div class="text-2xl md:text-4xl font-bold text-blue-400 tech-font mb-2">CONSULTAR</div>
-                            <div class="text-gray-300 text-sm md:text-base">1 Agente IA/Ano</div>
-                        </div>
-                        <div>
-                            <div class="text-2xl md:text-4xl font-bold text-green-400 tech-font mb-2">ATÉ 90%</div>
-                            <div class="text-gray-300 text-sm md:text-base">ECONOMIA TOTAL</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Large Demo Button -->
-            <div class="mt-12 sm:mt-16 text-center px-4">
-                <a href="https://wa.me/5511921269957?text=Olá! Gostaria de ver uma demonstração dos agentes de IA" target="_blank" class="inline-block bg-gradient-to-r from-blue-600 via-slate-600 to-blue-600 hover:from-blue-700 hover:via-slate-700 hover:to-blue-700 px-6 sm:px-12 md:px-16 py-4 sm:py-6 md:py-8 rounded-2xl sm:rounded-3xl text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold tech-font text-white transform hover:scale-105 transition-all duration-300 pulse-glow border-2 border-blue-500 shadow-2xl">
-                    🎥 VER DEMONSTRAÇÃO AO VIVO
-                </a>
-                <div class="mt-4 sm:mt-6 text-center">
-                    <p class="text-gray-300 text-base sm:text-lg mb-2">Veja nossos agentes funcionando em tempo real!</p>
-                    <div class="flex flex-col sm:flex-row justify-center items-center space-y-2 sm:space-y-0 sm:space-x-4 text-xs sm:text-sm text-gray-400">
-                        <span class="flex items-center"><span class="w-2 h-2 bg-green-500 rounded-full mr-2 pulse-glow"></span>WhatsApp Direto</span>
-                        <span class="flex items-center"><span class="w-2 h-2 bg-blue-500 rounded-full mr-2 pulse-glow"></span>Demonstração Gratuita</span>
-                        <span class="flex items-center"><span class="w-2 h-2 bg-slate-500 rounded-full mr-2 pulse-glow"></span>Sem Compromisso</span>
-                    </div>
-                </div>
-            </div>
+  <!-- A Solução -->
+  <section id="solucao" class="py-16">
+    <div class="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-10 items-center">
+      <div class="rounded-3xl p-6 bg-zinc-900/70 border border-red-600/20 glow">
+        <h2 class="text-3xl font-extrabold">Eu sou a Lola.</h2>
+        <p class="mt-4 text-white/90 text-lg">Mais que ferramenta: sua guia, sua amiga e motivadora. Juntas, vamos transformar hábitos e a sua vida.</p>
+        <div class="mt-6 flex flex-col gap-3 text-white/90 text-sm">
+          <div class="flex items-start gap-3"><span>💬</span><p>Acompanhamento diário no WhatsApp: mensagens, lembretes e ajustes rápidos.</p></div>
+          <div class="flex items-start gap-3"><span>🥗</span><p>Dieta em gramas com os alimentos que você já tem em casa.</p></div>
+          <div class="flex items-start gap-3"><span>📊</span><p>Feedback constante para você não desistir.</p></div>
         </div>
-    </section>
-
-    <!-- Sectors Section -->
-    <section id="sectors" class="py-20 neural-network">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-5xl md:text-6xl font-bold mb-8 holographic-text tech-font neon-text">
-                    QUALQUER SETOR
-                </h2>
-                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
-                    Nossos agentes de IA são adaptáveis para <span class="text-blue-400 font-bold">qualquer tipo de negócio</span>
-                </p>
-            </div>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
-                <!-- Clínicas -->
-                <div class="agent-card rounded-2xl p-3 sm:p-4 md:p-6 text-center">
-                    <div class="sector-icon">
-                        <span>🏥</span>
-                    </div>
-                    <h3 class="text-base sm:text-lg md:text-xl font-bold mb-2 sm:mb-3 md:mb-4 text-white tech-font">CLÍNICAS</h3>
-                    <p class="text-gray-300 text-xs sm:text-xs md:text-sm mb-2 sm:mb-3 md:mb-4 leading-relaxed">Agendamento de consultas, confirmações, lembretes e atendimento ao paciente</p>
-                    <div class="text-xs text-blue-400 tech-font">MÉDICAS • ODONTOLÓGICAS • ESTÉTICAS</div>
-                </div>
-                
-                <!-- Restaurantes -->
-                <div class="agent-card rounded-2xl p-3 sm:p-4 md:p-6 text-center">
-                    <div class="sector-icon">
-                        <span>🍽️</span>
-                    </div>
-                    <h3 class="text-base sm:text-lg md:text-xl font-bold mb-2 sm:mb-3 md:mb-4 text-white tech-font">RESTAURANTES</h3>
-                    <p class="text-gray-300 text-xs sm:text-xs md:text-sm mb-2 sm:mb-3 md:mb-4 leading-relaxed">Reservas, pedidos, cardápio digital e atendimento personalizado</p>
-                    <div class="text-xs text-slate-400 tech-font">DELIVERY • RESERVAS • CARDÁPIO</div>
-                </div>
-                
-                <!-- E-commerce -->
-                <div class="agent-card rounded-2xl p-3 sm:p-4 md:p-6 text-center">
-                    <div class="sector-icon">
-                        <span>🛒</span>
-                    </div>
-                    <h3 class="text-base sm:text-lg md:text-xl font-bold mb-2 sm:mb-3 md:mb-4 text-white tech-font">E-COMMERCE</h3>
-                    <p class="text-gray-300 text-xs sm:text-xs md:text-sm mb-2 sm:mb-3 md:mb-4 leading-relaxed">Vendas, suporte ao cliente, recomendações e pós-venda</p>
-                    <div class="text-xs text-blue-400 tech-font">VENDAS • SUPORTE • RECOMENDAÇÕES</div>
-                </div>
-                
-                <!-- Imobiliárias -->
-                <div class="agent-card rounded-2xl p-3 sm:p-4 md:p-6 text-center">
-                    <div class="sector-icon">
-                        <span>🏠</span>
-                    </div>
-                    <h3 class="text-base sm:text-lg md:text-xl font-bold mb-2 sm:mb-3 md:mb-4 text-white tech-font">IMOBILIÁRIAS</h3>
-                    <p class="text-gray-300 text-xs sm:text-xs md:text-sm mb-2 sm:mb-3 md:mb-4 leading-relaxed">Qualificação de leads, agendamento de visitas e informações sobre imóveis</p>
-                    <div class="text-xs text-green-400 tech-font">LEADS • VISITAS • INFORMAÇÕES</div>
-                </div>
-                
-                <!-- Academias -->
-                <div class="agent-card rounded-2xl p-3 sm:p-4 md:p-6 text-center">
-                    <div class="sector-icon">
-                        <span>💪</span>
-                    </div>
-                    <h3 class="text-base sm:text-lg md:text-xl font-bold mb-2 sm:mb-3 md:mb-4 text-white tech-font">ACADEMIAS</h3>
-                    <p class="text-gray-300 text-xs sm:text-xs md:text-sm mb-2 sm:mb-3 md:mb-4 leading-relaxed">Matrículas, agendamento de aulas, planos e acompanhamento</p>
-                    <div class="text-xs text-red-400 tech-font">MATRÍCULAS • AULAS • PLANOS</div>
-                </div>
-                
-                <!-- Escolas -->
-                <div class="agent-card rounded-2xl p-3 sm:p-4 md:p-6 text-center">
-                    <div class="sector-icon">
-                        <span>🎓</span>
-                    </div>
-                    <h3 class="text-base sm:text-lg md:text-xl font-bold mb-2 sm:mb-3 md:mb-4 text-white tech-font">ESCOLAS</h3>
-                    <p class="text-gray-300 text-xs sm:text-xs md:text-sm mb-2 sm:mb-3 md:mb-4 leading-relaxed">Matrículas, informações sobre cursos, suporte aos alunos</p>
-                    <div class="text-xs text-yellow-400 tech-font">MATRÍCULAS • CURSOS • SUPORTE</div>
-                </div>
-                
-                <!-- Salões -->
-                <div class="agent-card rounded-2xl p-3 sm:p-4 md:p-6 text-center">
-                    <div class="sector-icon">
-                        <span>💇</span>
-                    </div>
-                    <h3 class="text-base sm:text-lg md:text-xl font-bold mb-2 sm:mb-3 md:mb-4 text-white tech-font">SALÕES</h3>
-                    <p class="text-gray-300 text-xs sm:text-xs md:text-sm mb-2 sm:mb-3 md:mb-4 leading-relaxed">Agendamentos, confirmações, serviços disponíveis e promoções</p>
-                    <div class="text-xs text-pink-400 tech-font">AGENDAMENTOS • SERVIÇOS • PROMOÇÕES</div>
-                </div>
-                
-                <!-- Personalizado -->
-                <div class="agent-card rounded-2xl p-3 sm:p-4 md:p-6 text-center border-2 border-blue-500">
-                    <div class="sector-icon">
-                        <span>⚙️</span>
-                    </div>
-                    <h3 class="text-base sm:text-lg md:text-xl font-bold mb-2 sm:mb-3 md:mb-4 text-white tech-font holographic-text">SEU SETOR</h3>
-                    <p class="text-gray-300 text-xs sm:text-xs md:text-sm mb-2 sm:mb-3 md:mb-4 leading-relaxed">Criamos agentes personalizados para qualquer tipo de negócio</p>
-                    <div class="text-xs text-blue-400 tech-font">PERSONALIZADO • ÚNICO • EXCLUSIVO</div>
-                </div>
-            </div>
+        <a href="https://www.asaas.com/c/qni1ku7sij3v8ef6" target="_blank" rel="noopener" onclick="trackEvent('InitiateCheckout',{source:'solucao'})" class="mt-6 inline-block px-7 py-3 rounded-full bg-red-600 hover:bg-red-700 font-bold transition glow">QUERO A LOLA AGORA</a>
+      </div>
+      <!-- Chat ilustrativo -->
+      <div class="rounded-3xl p-6 bg-zinc-900/70 border border-red-600/20 glow">
+        <h3 class="text-xl font-bold">Como a conversa com a Lola acontece</h3>
+        <div class="mt-4 space-y-3">
+          <div><div class="max-w-[80%] rounded-2xl px-4 py-3 bg-white/10">Oi, Lola! Hoje quase pulei o almoço 😕</div></div>
+          <div class="flex justify-end"><div class="max-w-[80%] rounded-2xl px-4 py-3 bg-red-500 text-black font-semibold">Tudo bem! Vamos ajustar o lanche para manter o foco? 🔥</div></div>
+          <div><div class="max-w-[80%] rounded-2xl px-4 py-3 bg-white/10">Tenho banana, iogurte e aveia em casa.</div></div>
+          <div class="flex justify-end"><div class="max-w-[80%] rounded-2xl px-4 py-3 bg-red-500 text-black font-semibold">Perfeito! 150g iogurte + 25g aveia + 1/2 banana. Te guio no resto 😉</div></div>
         </div>
-    </section>
+        <p class="text-white/60 text-xs mt-4">Conversa ilustrativa.</p>
+      </div>
+    </div>
+  </section>
 
-    <!-- Testimonials Section -->
-    <section class="py-20 neural-network">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold mb-8 holographic-text tech-font neon-text leading-tight">
-                    CLIENTES SATISFEITOS
-                </h2>
-                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
-                    Veja como nossos agentes de IA estão <span class="text-blue-400 font-bold">revolucionando</span> empresas reais
-                </p>
-            </div>
-            
-            <div class="grid md:grid-cols-3 gap-8 mb-16">
-                <!-- Testimonial 1 -->
-                <div class="ai-agent-card rounded-2xl p-8 text-center">
-                    <div class="w-20 h-20 bg-gradient-to-r from-blue-500 to-slate-600 rounded-full mx-auto mb-6 flex items-center justify-center text-3xl">
-                        👨‍⚕️
-                    </div>
-                    <h3 class="text-xl font-bold mb-4 text-white tech-font">Dr. Carlos Silva</h3>
-                    <p class="text-blue-400 mb-4 tech-font">Clínica Médica Premium</p>
-                    <p class="text-gray-300 mb-6 leading-relaxed">
-                        "Nosso agente de IA agenda <span class="text-blue-400 font-bold">300+ consultas por dia</span>. 
-                        Economizamos R$ 15.000/mês em recepcionistas!"
-                    </p>
-                    <div class="flex justify-center space-x-1 text-yellow-400">
-                        ⭐⭐⭐⭐⭐
-                    </div>
-                </div>
-                
-                <!-- Testimonial 2 -->
-                <div class="ai-agent-card rounded-2xl p-8 text-center">
-                    <div class="w-20 h-20 bg-gradient-to-r from-slate-500 to-red-600 rounded-full mx-auto mb-6 flex items-center justify-center text-3xl">
-                        👩‍💼
-                    </div>
-                    <h3 class="text-xl font-bold mb-4 text-white tech-font">Ana Costa</h3>
-                    <p class="text-slate-400 mb-4 tech-font">E-commerce Fashion</p>
-                    <p class="text-gray-300 mb-6 leading-relaxed">
-                        "Vendas aumentaram <span class="text-slate-400 font-bold">400%</span> com nosso agente. 
-                        Ele vende 24h e nunca perde um cliente!"
-                    </p>
-                    <div class="flex justify-center space-x-1 text-yellow-400">
-                        ⭐⭐⭐⭐⭐
-                    </div>
-                </div>
-                
-                <!-- Testimonial 3 -->
-                <div class="ai-agent-card rounded-2xl p-8 text-center">
-                    <div class="w-20 h-20 bg-gradient-to-r from-green-500 to-blue-600 rounded-full mx-auto mb-6 flex items-center justify-center text-3xl">
-                        👨‍🍳
-                    </div>
-                    <h3 class="text-xl font-bold mb-4 text-white tech-font">Roberto Lima</h3>
-                    <p class="text-green-400 mb-4 tech-font">Rede de Restaurantes</p>
-                    <p class="text-gray-300 mb-6 leading-relaxed">
-                        "Nossos 5 restaurantes usam o agente. <span class="text-green-400 font-bold">Zero erros</span> 
-                        em pedidos e reservas!"
-                    </p>
-                    <div class="flex justify-center space-x-1 text-yellow-400">
-                        ⭐⭐⭐⭐⭐
-                    </div>
-                </div>
-            </div>
+  <!-- Benefícios -->
+  <section id="beneficios" class="py-20 bg-gradient-to-b from-black to-zinc-950">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-3xl font-extrabold text-center">Benefícios que você não recusa</h2>
+      <p class="text-center text-white/80 mt-2">Precisão técnica + carinho humano = transformação.</p>
+      <div class="mt-10 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="rounded-2xl p-6 bg-zinc-900/70 border border-red-600/20 glow">
+          <div class="text-3xl">🤝</div>
+          <h3 class="mt-3 font-semibold text-xl">Apoio diário e emocional</h3>
+          <p class="text-white/80 mt-2">24/7 com você. Entende seus dias difíceis e celebra suas vitórias.</p>
         </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="py-20 neural-network">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold mb-8 holographic-text tech-font neon-text leading-tight">
-                    PERGUNTAS FREQUENTES
-                </h2>
-                <p class="text-xl text-gray-300">
-                    Tire todas suas dúvidas sobre nossos agentes de IA
-                </p>
-            </div>
-            
-            <div class="space-y-6">
-                <!-- FAQ 1 -->
-                <div class="ai-agent-card rounded-2xl p-6">
-                    <h3 class="text-xl font-bold mb-4 text-white tech-font flex items-center">
-                        <span class="text-blue-400 mr-3">❓</span>
-                        Como funciona o agente de IA?
-                    </h3>
-                    <p class="text-gray-300 leading-relaxed">
-                        Nosso agente é treinado especificamente para seu negócio. Ele aprende seus produtos, serviços, 
-                        preços e processos. Funciona via <span class="text-blue-400 font-bold">WhatsApp, site, telefone</span> 
-                        e integra com seus sistemas existentes.
-                    </p>
-                </div>
-                
-                <!-- FAQ 2 -->
-                <div class="ai-agent-card rounded-2xl p-6">
-                    <h3 class="text-xl font-bold mb-4 text-white tech-font flex items-center">
-                        <span class="text-slate-400 mr-3">⚡</span>
-                        Quanto tempo para implementar?
-                    </h3>
-                    <p class="text-gray-300 leading-relaxed">
-                        <span class="text-slate-400 font-bold">7 a 14 dias</span> para ter seu agente funcionando. 
-                        Fazemos todo o setup, treinamento e integração. Você só precisa aprovar e começar a usar!
-                    </p>
-                </div>
-                
-                <!-- FAQ 3 -->
-                <div class="ai-agent-card rounded-2xl p-6">
-                    <h3 class="text-xl font-bold mb-4 text-white tech-font flex items-center">
-                        <span class="text-blue-400 mr-3">💰</span>
-                        Qual o investimento?
-                    </h3>
-                    <p class="text-gray-300 leading-relaxed">
-                        A partir de <span class="text-blue-400 font-bold">R$ 497/mês</span> - menos que um salário mínimo! 
-                        Sem taxa de setup, sem surpresas. Cancele quando quiser.
-                    </p>
-                </div>
-                
-                <!-- FAQ 4 -->
-                <div class="ai-agent-card rounded-2xl p-6">
-                    <h3 class="text-xl font-bold mb-4 text-white tech-font flex items-center">
-                        <span class="text-green-400 mr-3">🛡️</span>
-                        E se não funcionar?
-                    </h3>
-                    <p class="text-gray-300 leading-relaxed">
-                        <span class="text-green-400 font-bold">Garantia de 30 dias</span>! Se não economizar pelo menos 
-                        70% dos custos ou não ficar satisfeito, devolvemos 100% do investimento.
-                    </p>
-                </div>
-            </div>
+        <div class="rounded-2xl p-6 bg-zinc-900/70 border border-red-600/20 glow">
+          <div class="text-3xl">🥗</div>
+          <h3 class="mt-3 font-semibold text-xl">Dieta perfeita e sem neura</h3>
+          <p class="text-white/80 mt-2">Com o que você tem em casa. Tudo em gramas e macros por refeição.</p>
         </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 neural-network">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-4xl md:text-5xl font-bold mb-6 holographic-text tech-font neon-text">
-                PRONTO PARA TER SEU AGENTE?
-            </h2>
-            <p class="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">
-                Transforme seu atendimento hoje mesmo! Nossos agentes trabalham <span class="text-blue-400 font-bold">24/7</span> 
-                e fazem o trabalho de <span class="text-slate-400 font-bold">10 funcionários</span>
-            </p>
-            
-            <!-- Contact Cards -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-8 sm:mb-12">
-                <div class="ai-agent-card rounded-xl p-4 sm:p-6">
-                    <div class="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-green-500 to-green-600 rounded-2xl mx-auto mb-3 sm:mb-4 flex items-center justify-center">
-                        <svg class="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-base sm:text-lg font-semibold mb-2 text-white tech-font">WhatsApp</h3>
-                    <p class="text-gray-300 mb-3 sm:mb-4 text-sm">Fale conosco agora</p>
-                    <a href="https://wa.me/5511967035321?text=Olá! Gostaria de falar sobre os agentes de IA" target="_blank" class="bg-green-600 hover:bg-green-700 px-4 sm:px-6 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-300 transform hover:scale-105 inline-block">
-                        CHAMAR AGORA
-                    </a>
-                </div>
-                
-                <div class="ai-agent-card rounded-xl p-4 sm:p-6">
-                    <div class="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl mx-auto mb-3 sm:mb-4 flex items-center justify-center">
-                        <svg class="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-base sm:text-lg font-semibold mb-2 text-white tech-font">Email</h3>
-                    <p class="text-gray-300 mb-3 sm:mb-4 text-sm">contato@nextintellectus.com</p>
-                    <button class="bg-blue-600 hover:bg-blue-700 px-4 sm:px-6 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-300 transform hover:scale-105">
-                        ENVIAR EMAIL
-                    </button>
-                </div>
-                
-                <div class="ai-agent-card rounded-xl p-4 sm:p-6 sm:col-span-2 md:col-span-1">
-                    <div class="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-slate-500 to-slate-600 rounded-2xl mx-auto mb-3 sm:mb-4 flex items-center justify-center">
-                        <svg class="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-base sm:text-lg font-semibold mb-2 text-white tech-font">Demonstração</h3>
-                    <p class="text-gray-300 mb-3 sm:mb-4 text-sm">Veja funcionando ao vivo</p>
-                    <a href="https://wa.me/5511921269957?text=Olá! Gostaria de ver uma demonstração dos agentes de IA" target="_blank" class="bg-slate-600 hover:bg-slate-700 px-4 sm:px-6 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-300 transform hover:scale-105 inline-block">
-                        VER DEMO
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Main CTA -->
-            <div class="mb-8 sm:mb-12 px-4">
-                <button class="bg-gradient-to-r from-blue-600 to-slate-600 hover:from-blue-700 hover:to-slate-700 px-6 sm:px-8 md:px-12 py-4 sm:py-5 md:py-6 rounded-xl sm:rounded-2xl text-lg sm:text-xl md:text-2xl font-bold tech-font text-white transform hover:scale-105 transition-all duration-300 pulse-glow mb-3 sm:mb-4">
-                    🤖 CRIAR MEU AGENTE AGORA
-                </button>
-                <p class="text-gray-400 text-xs sm:text-sm">Implementação em 7 dias • Garantia de 30 dias • Suporte 24/7</p>
-            </div>
-            
-            <!-- Guarantee -->
-            <div class="agent-showcase rounded-2xl p-4 sm:p-6 md:p-8 max-w-3xl mx-auto">
-                <h3 class="text-lg sm:text-xl md:text-2xl font-bold mb-4 sm:mb-6 text-white tech-font holographic-text">🛡️ GARANTIA TOTAL DE SATISFAÇÃO</h3>
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 text-center">
-                    <div>
-                        <div class="text-2xl sm:text-3xl font-bold text-green-400 tech-font mb-2">30 DIAS</div>
-                        <div class="text-gray-300 text-xs sm:text-sm">Para testar sem riscos</div>
-                    </div>
-                    <div>
-                        <div class="text-2xl sm:text-3xl font-bold text-blue-400 tech-font mb-2">70%</div>
-                        <div class="text-gray-300 text-xs sm:text-sm">Economia garantida</div>
-                    </div>
-                    <div>
-                        <div class="text-2xl sm:text-3xl font-bold text-slate-400 tech-font mb-2">100%</div>
-                        <div class="text-gray-300 text-xs sm:text-sm">Dinheiro de volta</div>
-                    </div>
-                </div>
-                <p class="text-gray-300 mt-4 sm:mt-6 leading-relaxed text-sm sm:text-base">
-                    Se em 30 dias você não economizar pelo menos 70% dos custos com funcionários, 
-                    ou não ficar completamente satisfeito, devolvemos 100% do seu investimento!
-                </p>
-            </div>
+        <div class="rounded-2xl p-6 bg-zinc-900/70 border border-red-600/20 glow">
+          <div class="text-3xl">🧮</div>
+          <h3 class="mt-3 font-semibold text-xl">Precisão da IA</h3>
+          <p class="text-white/80 mt-2">IMC, gasto calórico, peso ideal e estimativa de evolução.</p>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="py-16 border-t border-slate-800 bg-gradient-to-b from-slate-900 to-slate-950">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Footer Content -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 mb-8 sm:mb-12">
-                <!-- Company Info -->
-                <div class="sm:col-span-2 md:col-span-2">
-                    <div class="flex items-center space-x-2 sm:space-x-3 mb-4 sm:mb-6">
-                        <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl overflow-hidden pulse-glow">
-                            <img src="https://i.postimg.cc/ZWRTVZHw/logo.png" alt="Next Intellectus Logo" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                            <div class="w-full h-full bg-gradient-to-r from-blue-500 to-slate-500 rounded-xl flex items-center justify-center" style="display: none;">
-                                <span class="text-white font-bold text-base sm:text-lg tech-font">NI</span>
-                            </div>
-                        </div>
-                        <div>
-                            <span class="text-lg sm:text-xl md:text-2xl font-bold holographic-text tech-font">Next Intellectus</span>
-                            <div class="text-xs sm:text-sm text-blue-400 opacity-75 tech-font">AGENTES DE IA SUPER INTELIGENTES</div>
-                        </div>
-                    </div>
-                    <p class="text-gray-300 leading-relaxed mb-4 sm:mb-6 max-w-md text-sm sm:text-base">
-                        Revolucionamos empresas com agentes de IA que trabalham 24/7, 
-                        fazendo o trabalho de 10 funcionários com perfeição total.
-                    </p>
-                    <div class="flex space-x-3 sm:space-x-4">
-                        <div class="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg flex items-center justify-center hover:scale-110 transition-transform cursor-pointer">
-                            <span class="text-white text-sm sm:text-lg">📱</span>
-                        </div>
-                        <div class="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-slate-600 to-slate-700 rounded-lg flex items-center justify-center hover:scale-110 transition-transform cursor-pointer">
-                            <span class="text-white text-sm sm:text-lg">📧</span>
-                        </div>
-                        <div class="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-green-600 to-green-700 rounded-lg flex items-center justify-center hover:scale-110 transition-transform cursor-pointer">
-                            <span class="text-white text-sm sm:text-lg">💬</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Services -->
-                <div>
-                    <h3 class="text-base sm:text-lg font-bold text-white mb-3 sm:mb-4 tech-font">NOSSOS AGENTES</h3>
-                    <ul class="space-y-1 sm:space-y-2 text-gray-300 text-sm sm:text-base">
-                        <li class="hover:text-blue-400 transition-colors cursor-pointer">💬 Atendimento</li>
-                        <li class="hover:text-blue-400 transition-colors cursor-pointer">📈 Vendas</li>
-                        <li class="hover:text-blue-400 transition-colors cursor-pointer">📅 Agendamento</li>
-                        <li class="hover:text-blue-400 transition-colors cursor-pointer">⚙️ Suporte</li>
-                        <li class="hover:text-blue-400 transition-colors cursor-pointer">🏢 Recepção</li>
-                        <li class="hover:text-blue-400 transition-colors cursor-pointer">🎯 Personalizado</li>
-                    </ul>
-                </div>
-                
-                <!-- Contact -->
-                <div>
-                    <h3 class="text-base sm:text-lg font-bold text-white mb-3 sm:mb-4 tech-font">CONTATO</h3>
-                    <ul class="space-y-2 sm:space-y-3 text-gray-300 text-sm sm:text-base">
-                        <li class="flex items-center space-x-2">
-                            <span class="text-green-400">📱</span>
-                            <span class="text-xs sm:text-sm">+55 (11) 96703-5321</span>
-                        </li>
-                        <li class="flex items-center space-x-2">
-                            <span class="text-blue-400">📧</span>
-                            <span class="text-xs sm:text-sm break-all">contato@nextintellectus.com</span>
-                        </li>
-                        <li class="flex items-center space-x-2">
-                            <span class="text-slate-400">🌐</span>
-                            <span class="text-xs sm:text-sm">www.nextintellectus.com</span>
-                        </li>
-                        <li class="flex items-center space-x-2">
-                            <span class="text-slate-400">⏰</span>
-                            <span class="text-xs sm:text-sm">Atendimento 24/7</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            
-            <!-- Bottom Footer -->
-            <div class="border-t border-slate-700 pt-8">
-                <div class="flex flex-col md:flex-row justify-between items-center">
-                    <div class="mb-4 md:mb-0">
-                        <p class="text-gray-400 text-center md:text-left">
-                            © 2024 Next Intellectus. Todos os direitos reservados.
-                        </p>
-                        <p class="text-gray-500 text-sm text-center md:text-left">
-                            Revolucionando empresas com Inteligência Artificial
-                        </p>
-                    </div>
-                    <div class="flex space-x-6 text-sm text-gray-400">
-                        <a href="#" class="hover:text-blue-400 transition-colors">Termos de Uso</a>
-                        <a href="#" class="hover:text-blue-400 transition-colors">Privacidade</a>
-                        <a href="#" class="hover:text-blue-400 transition-colors">Suporte</a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Tech Stats -->
-            <div class="mt-12 text-center">
-                <div class="ai-stats rounded-xl p-6 max-w-4xl mx-auto">
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                        <div>
-                            <div class="text-2xl font-bold text-blue-400 tech-font holographic-text">500+</div>
-                            <div class="text-xs text-gray-400 tech-font">EMPRESAS ATENDIDAS</div>
-                        </div>
-                        <div>
-                            <div class="text-2xl font-bold text-green-400 tech-font holographic-text">1M+</div>
-                            <div class="text-xs text-gray-400 tech-font">CLIENTES ATENDIDOS</div>
-                        </div>
-                        <div>
-                            <div class="text-2xl font-bold text-slate-400 tech-font holographic-text">99.9%</div>
-                            <div class="text-xs text-gray-400 tech-font">UPTIME GARANTIDO</div>
-                        </div>
-                        <div>
-                            <div class="text-2xl font-bold text-blue-400 tech-font holographic-text">24/7</div>
-                            <div class="text-xs text-gray-400 tech-font">FUNCIONAMENTO</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="rounded-2xl p-6 bg-zinc-900/70 border border-red-600/20 glow">
+          <div class="text-3xl">🏋️‍♀️</div>
+          <h3 class="mt-3 font-semibold text-xl">Plano completo</h3>
+          <p class="text-white/80 mt-2">Treinos, receitas e direcionamento contínuo no WhatsApp.</p>
         </div>
-    </footer>
+      </div>
 
-    <script>
-        // Enhanced smooth scrolling with tech effects
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    // Add loading effect
-                    const loadingBar = document.querySelector('.loading-bar');
-                    loadingBar.style.opacity = '1';
-                    
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                    
-                    setTimeout(() => {
-                        loadingBar.style.opacity = '0.3';
-                    }, 1000);
-                }
-            });
-        });
+      <!-- Gatilhos -->
+      <div class="mt-12 grid lg:grid-cols-3 gap-6">
+        <div class="rounded-3xl p-6 bg-zinc-900/70 border border-red-600/20 glow">
+          <h4 class="text-xl font-bold">Mude de vida agora</h4>
+          <p class="text-white/80 mt-2">Não espere “segunda-feira”. Comece hoje e se orgulhe de você daqui a 90 dias.</p>
+        </div>
+        <div class="rounded-3xl p-6 bg-zinc-900/70 border border-red-600/20 glow">
+          <h4 class="text-xl font-bold">Corpo dos sonhos sem loucuras</h4>
+          <p class="text-white/80 mt-2">Constância comendo o que cabe na sua rotina e geladeira.</p>
+        </div>
+        <div class="rounded-3xl p-6 bg-zinc-900/70 border border-red-600/20 glow">
+          <h4 class="text-xl font-bold">Final de ano inesquecível</h4>
+          <p class="text-white/80 mt-2">Chegue nas festas com confiança, energia e leveza.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        // Enhanced navigation scroll effects
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            const scrollPercent = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
-            
-            if (window.scrollY > 100) {
-                nav.classList.add('bg-opacity-95');
-                nav.style.backdropFilter = 'blur(20px)';
-            } else {
-                nav.classList.remove('bg-opacity-95');
-                nav.style.backdropFilter = 'blur(10px)';
-            }
-        });
+  <!-- Oferta -->
+  <section id="oferta" class="py-20">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid lg:grid-cols-2 gap-8 items-stretch">
+        <div class="rounded-3xl p-6 bg-zinc-900/70 border border-red-600/20 glow">
+          <h3 class="text-2xl font-extrabold">Oferta imperdível</h3>
+          <p class="text-white/80 mt-2">Sua parceira a cada passo para alcançar o corpo dos seus sonhos.</p>
+          <ul class="mt-5 space-y-2 text-white/90">
+            <li class="flex items-center gap-2"><span>✔</span> Acompanhamento diário via WhatsApp</li>
+            <li class="flex items-center gap-2"><span>✔</span> Dieta personalizada com seus alimentos</li>
+            <li class="flex items-center gap-2"><span>✔</span> Treinos e receitas simples</li>
+            <li class="flex items-center gap-2"><span>✔</span> Motivação e ajustes sempre que precisar</li>
+          </ul>
+          <div class="mt-6 rounded-2xl p-4 bg-white/5">
+            <p class="text-sm text-white/70 line-through">R$ 197,00/mês</p>
+            <p class="text-4xl font-extrabold">R$ 50,00<span class="text-lg font-semibold">/mês</span></p>
+            <p class="text-red-400 text-sm mt-1">Acesso imediato após o pagamento.</p>
+          </div>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="https://www.asaas.com/c/qni1ku7sij3v8ef6" target="_blank" rel="noopener" onclick="trackEvent('InitiateCheckout',{source:'oferta_principal'})" class="px-7 py-3 rounded-full bg-red-600 hover:bg-red-700 font-bold transition glow">QUERO A LOLA AGORA</a>
+            <a href="#provas" class="px-7 py-3 rounded-full border border-white/20 hover:bg-white/10 transition font-semibold">Ver resultados</a>
+          </div>
+          <div class="mt-6 flex flex-wrap items-center gap-4 text-sm text-white/70">
+            <span class="text-xs bg-white/10 px-2 py-1 rounded">Garantia de satisfação</span>
+            <span>Assinatura mensal, sem fidelidade</span>
+            <span class="flex items-center gap-1">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 11l9-7 9 7v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-8z" stroke="white" opacity=".6"/></svg>
+              Checkout seguro Asaas
+            </span>
+          </div>
+          <div class="mt-4 text-xs text-white/60">Pagou? A Lola te dá boas-vindas no WhatsApp automaticamente.</div>
+        </div>
 
-        // Enhanced particle system with quantum effects
-        function createParticle() {
-            const particle = document.createElement('div');
-            particle.className = 'quantum-particle';
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.animationDelay = Math.random() * 10 + 's';
-            particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
-            
-            // Enhanced colors with more variety
-            const colors = ['#3b82f6', '#64748b', '#475569', '#94a3b8'];
-            const color = colors[Math.floor(Math.random() * colors.length)];
-            particle.style.background = `radial-gradient(circle, ${color}, transparent)`;
-            particle.style.boxShadow = `0 0 20px ${color}`;
-            
-            document.querySelector('.quantum-particles').appendChild(particle);
-            
-            // Remove particle after animation
-            setTimeout(() => {
-                if (particle.parentNode) {
-                    particle.parentNode.removeChild(particle);
-                }
-            }, 20000);
-        }
+        <!-- Urgência -->
+        <div class="rounded-3xl p-6 bg-zinc-900/70 border border-red-600/20 glow">
+          <h4 class="text-xl font-bold">Vagas do lote atual</h4>
+          <p class="text-white/80 text-sm mt-1">Entrando agora, você tranca o preço promocional.</p>
+          <div class="mt-4">
+            <div class="w-full bg-white/10 rounded-full h-3 overflow-hidden">
+              <div id="loteBar" class="h-3 rounded-full" style="width: 68%; background: linear-gradient(90deg,#ef4444,#dc2626)"></div>
+            </div>
+            <div class="flex items-center justify-between mt-2 text-sm text-white/80">
+              <span id="loteTxt">68% das vagas preenchidas</span>
+              <span class="font-semibold"><span id="timerCard">--:--:--</span></span>
+            </div>
+          </div>
+          <ul class="mt-6 list-disc pl-5 text-white/80 text-sm space-y-2">
+            <li>Comece hoje: boas-vindas em minutos no WhatsApp.</li>
+            <li>Mudança real: hábitos simples, sem neura.</li>
+            <li>Seu ritmo, sua rotina, seu corpo dos sonhos.</li>
+          </ul>
+          <a href="https://www.asaas.com/c/qni1ku7sij3v8ef6" target="_blank" rel="noopener" onclick="trackEvent('InitiateCheckout',{source:'oferta_lote'})" class="mt-6 inline-block px-7 py-3 rounded-full bg-white text-black font-bold hover:opacity-90 transition glow">Garantir minha vaga</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        // Create particles and effects periodically
-        setInterval(createParticle, 2000);
+  <!-- Prova Social -->
+  <section id="provas" class="py-16">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-3xl font-extrabold text-center">O que nossas clientes estão dizendo</h2>
+      <p class="text-center text-white/80 mt-2">Transformações reais com a Lola ao lado.</p>
+      <div class="mt-8 grid md:grid-cols-3 gap-6">
+        <div class="rounded-2xl p-5 bg-zinc-900/70 border border-red-600/20 glow">
+          <p class="text-white/90">“Eu me sentia perdida, mas a Lola me salvou. Em 90 dias, eu perdi 8kg e recuperei minha autoestima.”</p>
+          <p class="text-white/60 text-sm mt-3">— Marina, 34</p>
+        </div>
+        <div class="rounded-2xl p-5 bg-zinc-900/70 border border-red-600/20 glow">
+          <p class="text-white/90">“Perdi 6kg em 7 semanas só seguindo as porções da Lola. Sem cortar tudo que eu gosto.”</p>
+          <p class="text-white/60 text-sm mt-3">— Ana, 29</p>
+        </div>
+        <div class="rounded-2xl p-5 bg-zinc-900/70 border border-red-600/20 glow">
+          <p class="text-white/90">“Ganhei 3kg de massa comendo simples, do jeito que cabe no meu dia.”</p>
+          <p class="text-white/60 text-sm mt-3">— Lucas, 33</p>
+        </div>
+      </div>
+      <div class="text-center mt-8">
+        <a href="https://www.asaas.com/c/qni1ku7sij3v8ef6" target="_blank" rel="noopener" onclick="trackEvent('InitiateCheckout',{source:'depoimentos'})" class="px-8 py-4 rounded-full bg-red-600 hover:bg-red-700 font-semibold transition inline-block glow">
+          Quero começar agora
+        </a>
+      </div>
+    </div>
+  </section>
 
-        // Enhanced button interactions with tech effects
-        document.querySelectorAll('button').forEach(button => {
-            button.addEventListener('click', function(e) {
-                // Create ripple effect
-                const ripple = document.createElement('span');
-                const rect = this.getBoundingClientRect();
-                const size = Math.max(rect.width, rect.height);
-                const x = e.clientX - rect.left - size / 2;
-                const y = e.clientY - rect.top - size / 2;
-                
-                ripple.style.width = ripple.style.height = size + 'px';
-                ripple.style.left = x + 'px';
-                ripple.style.top = y + 'px';
-                ripple.classList.add('ripple');
-                
-                this.appendChild(ripple);
-                
-                // Enhanced button animation
-                this.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                    this.style.transform = '';
-                    if (ripple.parentNode) {
-                        ripple.parentNode.removeChild(ripple);
-                    }
-                }, 300);
-                
-                // Tech sound effect simulation (visual feedback)
-                this.style.boxShadow = '0 0 30px rgba(59, 130, 246, 0.8)';
-                setTimeout(() => {
-                    this.style.boxShadow = '';
-                }, 200);
-                
-                // Enhanced functionality based on button text
-                const buttonText = this.textContent.trim();
-                console.log(`Button clicked: ${buttonText}`);
-                
-                // Facebook Pixel tracking for conversions
-                if (typeof fbq !== 'undefined') {
-                    if (buttonText.includes('CRIAR') || buttonText.includes('AGENTE')) {
-                        fbq('track', 'Lead', {
-                            content_name: 'Criar Agente IA',
-                            content_category: 'Lead Generation'
-                        });
-                    } else if (buttonText.includes('DEMONSTRAÇÃO') || buttonText.includes('VER') || buttonText.includes('DEMO')) {
-                        fbq('track', 'ViewContent', {
-                            content_name: 'Demonstração Agente IA',
-                            content_category: 'Demo Request'
-                        });
-                    } else if (buttonText.includes('CHAMAR') || buttonText.includes('WHATSAPP')) {
-                        fbq('track', 'Contact', {
-                            content_name: 'WhatsApp Contact',
-                            content_category: 'Contact'
-                        });
-                    } else if (buttonText.includes('EMAIL')) {
-                        fbq('track', 'Contact', {
-                            content_name: 'Email Contact',
-                            content_category: 'Contact'
-                        });
-                    }
-                }
-                
-                // Show tech-styled notifications
-                if (buttonText.includes('CRIAR') || buttonText.includes('AGENTE')) {
-                    showTechNotification('🤖 Iniciando criação do seu agente de IA...', 'blue');
-                } else if (buttonText.includes('DEMONSTRAÇÃO') || buttonText.includes('VER') || buttonText.includes('DEMO')) {
-                    showTechNotification('🎥 Carregando demonstração ao vivo...', 'slate');
-                } else if (buttonText.includes('CHAMAR') || buttonText.includes('WHATSAPP')) {
-                    showTechNotification('📱 Redirecionando para WhatsApp...', 'green');
-                } else if (buttonText.includes('EMAIL')) {
-                    showTechNotification('📧 Abrindo cliente de email...', 'blue');
-                }
-            });
-            
-            // Add hover effects
-            button.addEventListener('mouseenter', function() {
-                this.style.transform = 'scale(1.05)';
-                this.style.filter = 'brightness(1.2)';
-            });
-            
-            button.addEventListener('mouseleave', function() {
-                this.style.transform = '';
-                this.style.filter = '';
-            });
-        });
+  <!-- FAQ -->
+  <section id="faq" class="py-16 bg-black/30">
+    <div class="max-w-5xl mx-auto px-6">
+      <h2 class="text-3xl font-extrabold text-center">Perguntas Frequentes sobre a Lola</h2>
+      <div class="mt-8 space-y-4">
+        <details class="rounded-xl p-4 bg-zinc-900/70 border border-red-600/20">
+          <summary class="font-semibold cursor-pointer">1. O que é o Projeto 90 Dias? A Lola é um aplicativo?</summary>
+          <p class="text-white/80 mt-2">O Projeto 90 Dias é sua jornada de transformação pessoal, e a Lola é sua parceira de IA pelo WhatsApp. Nada para baixar: simples, prático e 100% focado em você.</p>
+        </details>
+        <details class="rounded-xl p-4 bg-zinc-900/70 border border-red-600/20">
+          <summary class="font-semibold cursor-pointer">2. A Lola é uma nutricionista de verdade?</summary>
+          <p class="text-white/80 mt-2">A Lola é uma IA treinada com especialistas em nutrição, treino e hábitos. Ela não substitui consulta médica, mas te guia com plano personalizado e acompanhamento diário.</p>
+        </details>
+        <details class="rounded-xl p-4 bg-zinc-900/70 border border-red-600/20">
+          <summary class="font-semibold cursor-pointer">3. Por que a Lola é melhor que um nutricionista tradicional?</summary>
+          <div class="text-white/80 mt-2 space-y-1">
+            <p>Acompanhamento diário, plano em gramas com o que há na sua casa, suporte 24/7 e preço acessível.</p>
+          </div>
+        </details>
+        <details class="rounded-xl p-4 bg-zinc-900/70 border border-red-600/20">
+          <summary class="font-semibold cursor-pointer">4. E se eu não tiver disciplina?</summary>
+          <p class="text-white/80 mt-2">A Lola te ajuda com constância, motivação e celebra cada pequena vitória. Progresso acima da perfeição.</p>
+        </details>
+        <details class="rounded-xl p-4 bg-zinc-900/70 border border-red-600/20">
+          <summary class="font-semibold cursor-pointer">5. O plano é flexível?</summary>
+          <p class="text-white/80 mt-2">100% flexível: ajusta aos seus gostos, rotina e restrições. É só avisar que a Lola adapta.</p>
+        </details>
+        <details class="rounded-xl p-4 bg-zinc-900/70 border border-red-600/20">
+          <summary class="font-semibold cursor-pointer">6. Como funciona a assinatura?</summary>
+          <p class="text-white/80 mt-2">R$ 50,00/mês. Acesso imediato no WhatsApp após o pagamento, sem fidelidade. Cancele quando quiser.</p>
+        </details>
+      </div>
+      <div class="text-center mt-10">
+        <a href="https://www.asaas.com/c/qni1ku7sij3v8ef6" target="_blank" rel="noopener" onclick="trackEvent('InitiateCheckout',{source:'faq'})" class="px-8 py-4 rounded-full bg-red-600 hover:bg-red-700 font-semibold transition inline-block glow">
+          Garantir meu acesso agora
+        </a>
+        <p class="text-white/70 text-sm mt-2">Pagamento confirmado = Boas-vindas no WhatsApp em minutos.</p>
+      </div>
+    </div>
+  </section>
 
-        // Tech notification system
-        function showTechNotification(message, color = 'blue') {
-            const notification = document.createElement('div');
-            notification.className = `fixed top-24 right-6 z-50 p-4 rounded-xl backdrop-filter backdrop-blur-lg bg-slate-900 bg-opacity-80 border border-${color}-500 text-white tech-font text-sm transform translate-x-full transition-transform duration-300`;
-            notification.innerHTML = `
-                <div class="flex items-center space-x-3">
-                    <div class="w-3 h-3 bg-${color}-500 rounded-full pulse-glow"></div>
-                    <span>${message}</span>
-                </div>
-            `;
-            
-            document.body.appendChild(notification);
-            
-            // Animate in
-            setTimeout(() => {
-                notification.style.transform = 'translateX(0)';
-            }, 100);
-            
-            // Animate out
-            setTimeout(() => {
-                notification.style.transform = 'translateX(100%)';
-                setTimeout(() => {
-                    if (notification.parentNode) {
-                        notification.parentNode.removeChild(notification);
-                    }
-                }, 300);
-            }, 3000);
-        }
+  <!-- CTA Final -->
+  <section class="py-16">
+    <div class="max-w-5xl mx-auto px-6 text-center">
+      <h3 class="text-3xl font-extrabold">Este é o seu momento</h3>
+      <p class="text-white/80 mt-2">Imagine-se no final do ano com confiança, leveza e orgulho do caminho percorrido. A Lola vai com você.</p>
+      <a href="https://www.asaas.com/c/qni1ku7sij3v8ef6" target="_blank" rel="noopener" onclick="trackEvent('InitiateCheckout',{source:'cta_final'})" class="mt-6 inline-block px-8 py-4 rounded-full bg-white text-black font-bold hover:opacity-90 transition glow">
+        Eu quero mudar de vida agora
+      </a>
+    </div>
+  </section>
 
-        // Agent card hover effects
-        document.querySelectorAll('.agent-card, .ai-agent-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                // Add dynamic glow effect
-                this.style.boxShadow = `0 20px 40px rgba(59, 130, 246, 0.3), 0 0 60px rgba(148, 163, 184, 0.2)`;
-                
-                // Animate icon
-                const icon = this.querySelector('.sector-icon');
-                if (icon) {
-                    icon.style.transform = 'scale(1.1) rotate(5deg)';
-                }
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.boxShadow = '';
-                const icon = this.querySelector('.sector-icon');
-                if (icon) {
-                    icon.style.transform = '';
-                }
-            });
-        });
+  <!-- Rodapé -->
+  <footer class="py-10 border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-white/60 text-sm">© <span id="ano"></span> Lola Nutri — Todos os direitos reservados.</p>
+      <div class="text-white/50 text-xs flex items-center gap-3">
+        <span>Acesso imediato após o pagamento no checkout seguro Asaas.</span>
+        <span class="opacity-80">|</span>
+        <span>Lola Nutri — desenvolvida por Next Intellectus</span>
+      </div>
+    </div>
+  </footer>
 
-        // AI Brain Animation
-        function animateAIBrain() {
-            const brainNodes = document.querySelectorAll('.brain-node');
-            const connections = document.querySelectorAll('.brain-connection');
-            
-            brainNodes.forEach((node, index) => {
-                setTimeout(() => {
-                    node.style.transform = 'scale(1.2)';
-                    node.style.boxShadow = '0 0 30px rgba(59, 130, 246, 0.8)';
-                    
-                    setTimeout(() => {
-                        node.style.transform = 'scale(1)';
-                        node.style.boxShadow = '0 0 20px rgba(59, 130, 246, 0.6)';
-                    }, 300);
-                }, index * 100);
-            });
-        }
+  <!-- CTA flutuante -->
+  <a id="ctaZap" href="https://www.asaas.com/c/qni1ku7sij3v8ef6" target="_blank" rel="noopener" onclick="trackEvent('InitiateCheckout',{source:'cta_floating'})" class="fixed bottom-6 right-6 bg-red-600 hover:bg-red-700 text-white font-bold rounded-full px-5 py-3 shadow-lg glow flex items-center gap-2 hover:scale-[1.03] transition">
+    <span>🚀</span> Garantir meu acesso
+  </a>
 
-        // Initialize tech effects on load
-        document.addEventListener('DOMContentLoaded', function() {
-            // Add initial particles and effects
-            for (let i = 0; i < 5; i++) {
-                setTimeout(createParticle, i * 1000);
-            }
-            
-            // Animate AI brain periodically
-            setInterval(animateAIBrain, 8000);
-            
-            // Show enhanced welcome notification
-            setTimeout(() => {
-                showTechNotification('🤖 Sistema Next Intellectus ONLINE', 'blue');
-                setTimeout(() => {
-                    showTechNotification('⚡ Agentes de IA ATIVADOS', 'slate');
-                    setTimeout(() => {
-                        showTechNotification('🚀 Pronto para REVOLUCIONAR seu negócio!', 'blue');
-                    }, 1500);
-                }, 1000);
-            }, 2000);
-        });
+  <script>
+    const $ = (id)=>document.getElementById(id);
+    $('ano').textContent = new Date().getFullYear();
 
-        // Add CSS for ripple effect
-        const style = document.createElement('style');
-        style.textContent = `
-            .ripple {
-                position: absolute;
-                border-radius: 50%;
-                background: rgba(255, 255, 255, 0.3);
-                transform: scale(0);
-                animation: ripple-animation 0.6s linear;
-                pointer-events: none;
-            }
-            
-            @keyframes ripple-animation {
-                to {
-                    transform: scale(4);
-                    opacity: 0;
-                }
-            }
-        `;
-        document.head.appendChild(style);
-    </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9755ba5c936ff1df',t:'MTc1NjIzNjQ2MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+    // Countdown 3h com reinício
+    (function initCountdown(hours = 3){
+      const key = 'lola_timer_start';
+      let start = localStorage.getItem(key);
+      if(!start){ start = Date.now(); localStorage.setItem(key, String(start)); }
+      function tick(){
+        const dur = hours * 3600 * 1000;
+        const now = Date.now();
+        const end = Number(start) + dur;
+        let rem = end - now;
+        if(rem <= 0){ start = Date.now(); localStorage.setItem(key, String(start)); rem = dur; }
+        const h = Math.floor(rem/3600000);
+        const m = Math.floor((rem%3600000)/60000);
+        const s = Math.floor((rem%60000)/1000);
+        const pad = (n)=> String(n).padStart(2,'0');
+        const txt = `${pad(h)}:${pad(m)}:${pad(s)}`;
+        const t1 = $('timer'), t2 = $('timerCard');
+        if(t1) t1.textContent = txt;
+        if(t2) t2.textContent = txt;
+      }
+      tick(); setInterval(tick, 1000);
+    })();
+
+    // Barra de vagas (estático demonstrativo)
+    (function(){
+      const bar = $('loteBar'), txt = $('loteTxt'); const fill = 68;
+      if(bar) bar.style.width = fill + '%';
+      if(txt) txt.textContent = `${fill}% das vagas preenchidas`;
+    })();
+  </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98114f6286bcf260',t:'MTc1ODIwMzQwMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
