@@ -5,14 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Lola — Mude de vida em 90 dias</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <meta name="description" content="Lola: sua parceira no WhatsApp. Dieta personalizada, motivação diária e acesso imediato após o pagamento. Estilo Netflix: preto e vermelho, lindo e de alta conversão.">
+  <meta name="description" content="Lola: sua parceira no WhatsApp. Dieta personalizada, motivação diária e acesso imediato após o pagamento. Paleta preto e vermelho, linda e de alta conversão.">
   <style>
-    /* Visual refinado e responsivo para a mídia do destaque (sem cortes) */
+    /* Visual refinado e responsivo (sem cortes) para a mídia do destaque */
     .hero-media { position: relative; width: 100%; border-radius: 1rem; overflow: hidden; background: #000; }
     .hero-media::before { content: none; }
     @media (max-width: 640px) { .hero-media::before { content: none; } }
     .hero-media > img, .hero-media > .fallback { position: relative; display: block; width: 100%; height: auto; object-fit: contain; background: #000; }
     .glow { box-shadow: 0 12px 30px rgba(0,0,0,0.25), 0 8px 18px rgba(0,0,0,0.18); }
+
+    /* Cards de vídeo 16:9 consistentes, rápidos e responsivos */
+    .video-card { position: relative; width: 100%; border-radius: 0.75rem; overflow: hidden; background: #000; }
+    .video-card::before { content:""; display:block; padding-top:56.25%; } /* 16:9 */
+    .video-card > video { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; background:#000; }
+
+    /* Ajustes sutis de foco/hover para CTAs */
+    .btn-red { background:#dc2626; }
+    .btn-red:hover { background:#b91c1c; }
   </style>
 
   <!-- Meta Pixel (Facebook) -->
@@ -22,9 +31,9 @@
     n.push=n; n.loaded=!0; n.version='2.0'; n.queue=[]; t=b.createElement(e); t.async=!0;
     t.src='https://connect.facebook.net/en_US/fbevents.js'; s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script');
-    fbq('init','1788063742589202');
+    fbq('init','1788063742589202'); /* Substitua pelo seu ID real */
     fbq('track','PageView');
-    // API usada pelos botões do site para acionar eventos
+    // API para disparar InitiateCheckout (mantida nos botões)
     window.trackEvent = function(event, data){
       try { if(event === 'InitiateCheckout'){ fbq('track','InitiateCheckout', data || {}); } } catch(e){}
     };
@@ -73,10 +82,10 @@
         <a href="#solucao" class="hover:text-red-400 transition">Solução</a>
         <a href="#beneficios" class="hover:text-red-400 transition">Benefícios</a>
         <a href="#oferta" class="hover:text-red-400 transition">Oferta</a>
-        <a href="#provas" class="hover:text-red-400 transition">Depoimentos</a>
+        <a href="#depoimentos-video" class="hover:text-red-400 transition">Vídeos</a>
         <a href="#faq" class="hover:text-red-400 transition">FAQ</a>
       </nav>
-      <a href="https://www.asaas.com/c/qni1ku7sij3v8ef6" target="_blank" rel="noopener" class="px-4 py-2 rounded-full bg-red-600 hover:bg-red-700 transition font-medium glow" onclick="trackEvent('InitiateCheckout',{source:'header'})">
+      <a href="https://www.asaas.com/c/qni1ku7sij3v8ef6" target="_blank" rel="noopener" class="px-4 py-2 rounded-full btn-red transition font-medium glow" onclick="trackEvent('InitiateCheckout',{source:'header'})">
         QUERO A LOLA AGORA
       </a>
     </div>
@@ -101,7 +110,7 @@
           <li class="flex items-center gap-2"><span>✅</span> Sem erros de macronutrientes</li>
         </ul>
         <div class="mt-8 flex flex-wrap items-center gap-4">
-          <a href="https://www.asaas.com/c/qni1ku7sij3v8ef6" target="_blank" rel="noopener" onclick="trackEvent('InitiateCheckout',{source:'hero'})" class="px-7 py-3 rounded-full bg-red-600 hover:bg-red-700 font-bold transition glow">
+          <a href="https://www.asaas.com/c/qni1ku7sij3v8ef6" target="_blank" rel="noopener" onclick="trackEvent('InitiateCheckout',{source:'hero'})" class="px-7 py-3 rounded-full btn-red font-bold transition glow">
             COMEÇAR AGORA
           </a>
         </div>
@@ -150,7 +159,7 @@
           <div class="flex items-start gap-3"><span>🥗</span><p>Dieta em gramas com os alimentos que você já tem em casa.</p></div>
           <div class="flex items-start gap-3"><span>📊</span><p>Feedback constante para você não desistir.</p></div>
         </div>
-        <a href="https://www.asaas.com/c/qni1ku7sij3v8ef6" target="_blank" rel="noopener" onclick="trackEvent('InitiateCheckout',{source:'solucao'})" class="mt-6 inline-block px-7 py-3 rounded-full bg-red-600 hover:bg-red-700 font-bold transition glow">QUERO A LOLA AGORA</a>
+        <a href="https://www.asaas.com/c/qni1ku7sij3v8ef6" target="_blank" rel="noopener" onclick="trackEvent('InitiateCheckout',{source:'solucao'})" class="mt-6 inline-block px-7 py-3 rounded-full btn-red font-bold transition glow">QUERO A LOLA AGORA</a>
       </div>
       <!-- Chat ilustrativo -->
       <div class="rounded-3xl p-6 bg-zinc-900/70 border border-red-600/20 glow">
@@ -212,6 +221,104 @@
     </div>
   </section>
 
+  <!-- Depoimentos em Vídeo (grade 4 por linha, sem autoplay, com som e controles) -->
+  <section id="depoimentos-video" class="py-16 bg-black/30">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex items-center justify-between flex-wrap gap-3">
+        <h2 class="text-3xl font-extrabold">Depoimentos em Vídeo</h2>
+        <span class="text-white/60 text-sm">Toque para assistir com som</span>
+      </div>
+
+      <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+        <!-- 1 -->
+        <div class="rounded-xl p-3 bg-zinc-900/70 border border-red-600/20 glow">
+          <div class="video-card border border-white/10">
+            <video playsinline controls preload="none">
+              <source src="https://d35ghwdno3nak3.cloudfront.net/veo3/1062060/3f0b53f4-7bd2-4a3c-8b79-3349bc8eb610.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <p class="text-xs text-white/60 mt-2">Acompanhamento diário</p>
+        </div>
+
+        <!-- 2 -->
+        <div class="rounded-xl p-3 bg-zinc-900/70 border border-red-600/20 glow">
+          <div class="video-card border border-white/10">
+            <video playsinline controls preload="none">
+              <source src="https://d35ghwdno3nak3.cloudfront.net/veo3/1062060/978a8242-0eda-47e0-8201-70778d209e7e.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <p class="text-xs text-white/60 mt-2">Dieta personalizada</p>
+        </div>
+
+        <!-- 3 -->
+        <div class="rounded-xl p-3 bg-zinc-900/70 border border-red-600/20 glow">
+          <div class="video-card border border-white/10">
+            <video playsinline controls preload="none">
+              <source src="https://d35ghwdno3nak3.cloudfront.net/veo3/1062060/5e318042-c608-4128-8034-2fa54fc4b271.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <p class="text-xs text-white/60 mt-2">Sem erros de macronutrientes</p>
+        </div>
+
+        <!-- 4 -->
+        <div class="rounded-xl p-3 bg-zinc-900/70 border border-red-600/20 glow">
+          <div class="video-card border border-white/10">
+            <video playsinline controls preload="none">
+              <source src="https://d35ghwdno3nak3.cloudfront.net/veo3/1062060/eabda19c-b0cb-4d52-af64-f60025e33c15.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <p class="text-xs text-white/60 mt-2">Resultados que motivam</p>
+        </div>
+
+        <!-- 5 -->
+        <div class="rounded-xl p-3 bg-zinc-900/70 border border-red-600/20 glow">
+          <div class="video-card border border-white/10">
+            <video playsinline controls preload="none">
+              <source src="https://d35ghwdno3nak3.cloudfront.net/veo3/1062060/37972dda-588d-4c3e-b528-42bd1ea69bf1.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <p class="text-xs text-white/60 mt-2">Suporte no WhatsApp</p>
+        </div>
+
+        <!-- 6 -->
+        <div class="rounded-xl p-3 bg-zinc-900/70 border border-red-600/20 glow">
+          <div class="video-card border border-white/10">
+            <video playsinline controls preload="none">
+              <source src="https://d35ghwdno3nak3.cloudfront.net/veo3/1062060/3a7af1a6-692d-4541-b2bb-77b993ef859f.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <p class="text-xs text-white/60 mt-2">Planos simples e práticos</p>
+        </div>
+
+        <!-- 7 -->
+        <div class="rounded-xl p-3 bg-zinc-900/70 border border-red-600/20 glow">
+          <div class="video-card border border-white/10">
+            <video playsinline controls preload="none">
+              <source src="https://d35ghwdno3nak3.cloudfront.net/veo3/1062060/2057e67b-fce2-4b6f-b109-fd03a91f242b.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <p class="text-xs text-white/60 mt-2">Rotina que funciona</p>
+        </div>
+
+        <!-- 8 -->
+        <div class="rounded-xl p-3 bg-zinc-900/70 border border-red-600/20 glow">
+          <div class="video-card border border-white/10">
+            <video playsinline controls preload="none">
+              <source src="https://d35ghwdno3nak3.cloudfront.net/veo3/1062060/469a9626-2d2b-4e0e-9aaa-a74ec239ec31.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <p class="text-xs text-white/60 mt-2">Constância com leveza</p>
+        </div>
+      </div>
+
+      <div class="text-center mt-10">
+        <a href="https://www.asaas.com/c/qni1ku7sij3v8ef6" target="_blank" rel="noopener" onclick="trackEvent('InitiateCheckout',{source:'depoimentos_video_grid'})" class="px-8 py-4 rounded-full btn-red font-semibold transition inline-block glow">
+          Quero começar agora
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- Oferta -->
   <section id="oferta" class="py-20">
     <div class="max-w-6xl mx-auto px-6">
@@ -231,8 +338,8 @@
             <p class="text-red-400 text-sm mt-1">Acesso imediato após o pagamento.</p>
           </div>
           <div class="mt-6 flex flex-wrap gap-3">
-            <a href="https://www.asaas.com/c/qni1ku7sij3v8ef6" target="_blank" rel="noopener" onclick="trackEvent('InitiateCheckout',{source:'oferta_principal'})" class="px-7 py-3 rounded-full bg-red-600 hover:bg-red-700 font-bold transition glow">QUERO A LOLA AGORA</a>
-            <a href="#provas" class="px-7 py-3 rounded-full border border-white/20 hover:bg-white/10 transition font-semibold">Ver resultados</a>
+            <a href="https://www.asaas.com/c/qni1ku7sij3v8ef6" target="_blank" rel="noopener" onclick="trackEvent('InitiateCheckout',{source:'oferta_principal'})" class="px-7 py-3 rounded-full btn-red font-bold transition glow">QUERO A LOLA AGORA</a>
+            <a href="#depoimentos-video" class="px-7 py-3 rounded-full border border-white/20 hover:bg-white/10 transition font-semibold">Ver resultados</a>
           </div>
           <div class="mt-6 flex flex-wrap items-center gap-4 text-sm text-white/70">
             <span class="text-xs bg-white/10 px-2 py-1 rounded">Garantia de satisfação</span>
@@ -269,7 +376,7 @@
     </div>
   </section>
 
-  <!-- Prova Social -->
+  <!-- Prova Social (texto) -->
   <section id="provas" class="py-16">
     <div class="max-w-7xl mx-auto px-6">
       <h2 class="text-3xl font-extrabold text-center">O que nossas clientes estão dizendo</h2>
@@ -288,13 +395,10 @@
           <p class="text-white/60 text-sm mt-3">— Lucas, 33</p>
         </div>
       </div>
-      <div class="text-center mt-8">
-        <a href="https://www.asaas.com/c/qni1ku7sij3v8ef6" target="_blank" rel="noopener" onclick="trackEvent('InitiateCheckout',{source:'depoimentos'})" class="px-8 py-4 rounded-full bg-red-600 hover:bg-red-700 font-semibold transition inline-block glow">
-          Quero começar agora
-        </a>
-      </div>
     </div>
   </section>
+
+
 
   <!-- FAQ -->
   <section id="faq" class="py-16 bg-black/30">
@@ -329,7 +433,7 @@
         </details>
       </div>
       <div class="text-center mt-10">
-        <a href="https://www.asaas.com/c/qni1ku7sij3v8ef6" target="_blank" rel="noopener" onclick="trackEvent('InitiateCheckout',{source:'faq'})" class="px-8 py-4 rounded-full bg-red-600 hover:bg-red-700 font-semibold transition inline-block glow">
+        <a href="https://www.asaas.com/c/qni1ku7sij3v8ef6" target="_blank" rel="noopener" onclick="trackEvent('InitiateCheckout',{source:'faq'})" class="px-8 py-4 rounded-full btn-red font-semibold transition inline-block glow">
           Garantir meu acesso agora
         </a>
         <p class="text-white/70 text-sm mt-2">Pagamento confirmado = Boas-vindas no WhatsApp em minutos.</p>
@@ -361,15 +465,15 @@
   </footer>
 
   <!-- CTA flutuante -->
-  <a id="ctaZap" href="https://www.asaas.com/c/qni1ku7sij3v8ef6" target="_blank" rel="noopener" onclick="trackEvent('InitiateCheckout',{source:'cta_floating'})" class="fixed bottom-6 right-6 bg-red-600 hover:bg-red-700 text-white font-bold rounded-full px-5 py-3 shadow-lg glow flex items-center gap-2 hover:scale-[1.03] transition">
+  <a id="ctaZap" href="https://www.asaas.com/c/qni1ku7sij3v8ef6" target="_blank" rel="noopener" onclick="trackEvent('InitiateCheckout',{source:'cta_floating'})" class="fixed bottom-6 right-6 btn-red text-white font-bold rounded-full px-5 py-3 shadow-lg glow flex items-center gap-2 hover:scale-[1.03] transition">
     <span>🚀</span> Garantir meu acesso
   </a>
 
   <script>
     const $ = (id)=>document.getElementById(id);
-    $('ano').textContent = new Date().getFullYear();
+    (function setYear(){ const el = document.getElementById('ano'); if(el) el.textContent = new Date().getFullYear(); })();
 
-    // Countdown 3h com reinício
+    // Countdown 3h com reinício local
     (function initCountdown(hours = 3){
       const key = 'lola_timer_start';
       let start = localStorage.getItem(key);
@@ -385,7 +489,7 @@
         const s = Math.floor((rem%60000)/1000);
         const pad = (n)=> String(n).padStart(2,'0');
         const txt = `${pad(h)}:${pad(m)}:${pad(s)}`;
-        const t1 = $('timer'), t2 = $('timerCard');
+        const t1 = document.getElementById('timer'), t2 = document.getElementById('timerCard');
         if(t1) t1.textContent = txt;
         if(t2) t2.textContent = txt;
       }
@@ -394,10 +498,10 @@
 
     // Barra de vagas (estático demonstrativo)
     (function(){
-      const bar = $('loteBar'), txt = $('loteTxt'); const fill = 68;
+      const bar = document.getElementById('loteBar'), txt = document.getElementById('loteTxt'); const fill = 68;
       if(bar) bar.style.width = fill + '%';
       if(txt) txt.textContent = `${fill}% das vagas preenchidas`;
     })();
   </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98114f6286bcf260',t:'MTc1ODIwMzQwMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'981907ba97aaf19d',t:'MTc1ODI4NDM1My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
