@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obrigado!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .checkmark-animation {
+            animation: checkmark 0.6s ease-in-out;
+        }
+        
+        @keyframes checkmark {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease-in-out 0.3s both;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .simple-bg {
+            background: #ffffff;
+        }
+    </style>
+</head>
+<body class="simple-bg min-h-screen flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl shadow-lg p-8 md:p-12 max-w-md w-full text-center">
+        <div class="checkmark-animation mb-6">
+            <div class="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto">
+                <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                </svg>
+            </div>
+        </div>
+        
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4 fade-in">
+            Agradecemos sua assinatura! 🎉
+        </h1>
+        
+        <p class="text-gray-600 text-lg mb-6 fade-in leading-relaxed">
+            Em instantes a Lola te chamará no WhatsApp para dar continuidade ao seu atendimento.
+        </p>
+        
+        <div class="bg-gray-50 rounded-lg p-4 mb-6 fade-in">
+            <p class="text-sm text-gray-500 mb-2">
+                📱 Aguarde a mensagem da Lola no WhatsApp
+            </p>
+            <p class="text-sm text-gray-500">
+                ⏱️ Tempo estimado: alguns minutos
+            </p>
+        </div>
+    </div>
+
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '1788063742589202');
+        
+        // Dispara evento de Purchase quando a página carrega
+        fbq('track', 'Purchase', {
+            value: 0.00, // IMPORTANTE: Substitua 0.00 pelo valor real da sua venda
+            currency: 'BRL'
+        });
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=1788063742589202&ev=PageView&noscript=1"
+    /></noscript>
+    
+    <script>
+        // Adiciona um pouco de interatividade extra
+        document.addEventListener('DOMContentLoaded', function() {
+            // Efeito de confete virtual (simulado com emojis)
+            setTimeout(() => {
+                const confetti = ['🎉', '🎊', '✨', '🌟'];
+                for (let i = 0; i < 5; i++) {
+                    setTimeout(() => {
+                        const emoji = confetti[Math.floor(Math.random() * confetti.length)];
+                        showFloatingEmoji(emoji);
+                    }, i * 200);
+                }
+            }, 1000);
+        });
+        
+        function showFloatingEmoji(emoji) {
+            const emojiEl = document.createElement('div');
+            emojiEl.textContent = emoji;
+            emojiEl.style.cssText = `
+                position: fixed;
+                font-size: 24px;
+                pointer-events: none;
+                z-index: 1000;
+                left: ${Math.random() * window.innerWidth}px;
+                top: ${window.innerHeight}px;
+                animation: float-up 3s ease-out forwards;
+            `;
+            
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes float-up {
+                    to {
+                        transform: translateY(-${window.innerHeight + 100}px) rotate(360deg);
+                        opacity: 0;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+            document.body.appendChild(emojiEl);
+            
+            setTimeout(() => {
+                emojiEl.remove();
+                style.remove();
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
