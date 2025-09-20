@@ -15,9 +15,9 @@
     .glow { box-shadow: 0 12px 30px rgba(0,0,0,0.25), 0 8px 18px rgba(0,0,0,0.18); }
 
     /* Cards de vídeo 16:9 consistentes, rápidos e responsivos */
-    .video-card { position: relative; width: 100%; border-radius: 0.75rem; overflow: hidden; background: #000; }
+    .video-card { position: relative; width: 100%; border-radius: 0.75rem; overflow: hidden; background: #1f2937; }
     .video-card::before { content:""; display:block; padding-top:56.25%; } /* 16:9 */
-    .video-card > video { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; background:#000; }
+    .video-card > video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
 
     /* Ajustes sutis de foco/hover para CTAs */
     .btn-red { background:#dc2626; }
@@ -45,13 +45,15 @@
 <body class="min-h-screen text-white bg-black overflow-x-hidden">
   <!-- Faixa de anúncio -->
   <div class="w-full bg-red-600/20 border-b border-red-500/30">
-    <div class="max-w-7xl mx-auto px-6 py-2 flex items-center justify-between gap-4 text-sm">
-      <div class="flex items-center gap-2">
+    <div class="max-w-7xl mx-auto px-4 py-2 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs sm:text-sm">
+      <div class="flex items-center gap-2 text-center sm:text-left">
         <span class="text-xs bg-red-600 text-white font-bold px-2 py-1 rounded">Oferta ativa</span>
-        <span class="text-white/80">Acesso imediato ao WhatsApp após o pagamento.</span>
+        <span class="text-white/80 hidden sm:inline">Acesso imediato ao WhatsApp após o pagamento.</span>
+        <span class="text-white/80 sm:hidden">Acesso imediato no WhatsApp</span>
       </div>
       <div class="flex items-center gap-2">
-        <span class="text-white/70">Preço promocional termina em</span>
+        <span class="text-white/70 hidden sm:inline">Preço promocional termina em</span>
+        <span class="text-white/70 sm:hidden">Termina em</span>
         <span id="timer" class="font-semibold text-red-400">--:--:--</span>
       </div>
     </div>
@@ -59,10 +61,10 @@
 
   <!-- Header -->
   <header class="sticky top-0 z-40 bg-black/70 backdrop-blur border-b border-red-500/20">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-      <a href="#" class="flex items-center gap-3">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2">
         <!-- Mascote -->
-        <svg width="36" height="36" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+        <svg width="32" height="32" viewBox="0 0 64 64" fill="none" aria-hidden="true" class="sm:w-9 sm:h-9">
           <defs>
             <linearGradient id="g1" x1="0" y1="0" x2="64" y2="64">
               <stop stop-color="#ef4444"/><stop offset="1" stop-color="#dc2626"/>
@@ -73,9 +75,9 @@
           <circle cx="26" cy="30" r="2.5" fill="#fff"/><circle cx="38" cy="30" r="2.5" fill="#fff"/>
           <path d="M22 44c4 3 16 3 20 0" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
         </svg>
-        <span class="font-semibold tracking-tight text-lg">Lola Nutri</span>
-        <span class="ml-3 text-[11px] bg-white text-slate-900 px-2 py-1 rounded-full font-bold">+2.000 clientes</span>
-        <span class="hidden sm:inline text-xs text-white/60 ml-3">— desenvolvida por <span class="font-semibold">Next Intellectus</span></span>
+        <span class="font-semibold tracking-tight text-base sm:text-lg">Lola Nutri</span>
+        <span class="hidden xs:inline ml-2 text-[10px] sm:text-[11px] bg-white text-slate-900 px-2 py-1 rounded-full font-bold">+2.000</span>
+        <span class="hidden lg:inline text-xs text-white/60 ml-3">— desenvolvida por <span class="font-semibold">Next Intellectus</span></span>
       </a>
       <nav class="hidden md:flex items-center gap-6 text-sm">
         <a href="#gancho" class="hover:text-red-400 transition">Início</a>
@@ -85,23 +87,24 @@
         <a href="#depoimentos-video" class="hover:text-red-400 transition">Vídeos</a>
         <a href="#faq" class="hover:text-red-400 transition">FAQ</a>
       </nav>
-      <a href="https://www.asaas.com/c/qni1ku7sij3v8ef6" target="_blank" rel="noopener" class="px-4 py-2 rounded-full btn-red transition font-medium glow" onclick="trackEvent('InitiateCheckout',{source:'header'})">
-        QUERO A LOLA AGORA
+      <a href="https://buy.stripe.com/cNi9AV0jM3Pca7fa4w4ZG00" target="_blank" rel="noopener" class="px-3 py-2 sm:px-4 rounded-full btn-red transition font-medium glow text-xs sm:text-sm" onclick="trackEvent('InitiateCheckout',{source:'header'})">
+        <span class="hidden sm:inline">QUERO A LOLA AGORA</span>
+        <span class="sm:hidden">QUERO AGORA</span>
       </a>
     </div>
   </header>
 
   <!-- Hero / Gancho -->
   <section id="gancho" class="relative bg-gradient-to-b from-black to-zinc-950">
-    <div class="max-w-7xl mx-auto px-6 py-16 lg:py-24 grid lg:grid-cols-2 gap-12 items-center">
-      <div>
-        <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight">
+    <div class="max-w-7xl mx-auto px-4 py-12 sm:py-16 lg:py-24 grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+      <div class="order-2 lg:order-1">
+        <h1 class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extrabold leading-tight">
           Você tenta começar uma jornada de saúde, mas se sente perdida e sozinha. O que está faltando não é um plano de dieta. É uma parceira.
         </h1>
-        <p class="mt-4 text-white/90 text-xl font-semibold">
+        <p class="mt-4 text-white/90 text-lg sm:text-xl font-semibold">
           Conheça a Lola. A IA que entende, motiva e te guia a cada passo para você não desistir de novo.
         </p>
-        <ul class="mt-6 grid gap-3 text-white/90">
+        <ul class="mt-6 grid gap-2 sm:gap-3 text-white/90 text-sm sm:text-base">
           <li class="flex items-center gap-2"><span>✅</span> Mude de vida em 90 dias com apoio real</li>
           <li class="flex items-center gap-2"><span>✅</span> Conquiste o corpo dos seus sonhos sem loucuras</li>
           <li class="flex items-center gap-2"><span>✅</span> Chegue ao final do ano com a autoestima lá em cima</li>
@@ -109,68 +112,74 @@
           <li class="flex items-center gap-2"><span>✅</span> Dieta personalizada</li>
           <li class="flex items-center gap-2"><span>✅</span> Sem erros de macronutrientes</li>
         </ul>
-        <div class="mt-8 flex flex-wrap items-center gap-4">
-          <a href="https://www.asaas.com/c/qni1ku7sij3v8ef6" target="_blank" rel="noopener" onclick="trackEvent('InitiateCheckout',{source:'hero'})" class="px-7 py-3 rounded-full btn-red font-bold transition glow">
+        <div class="mt-6 sm:mt-8 flex flex-wrap items-center gap-4">
+          <a href="https://buy.stripe.com/cNi9AV0jM3Pca7fa4w4ZG00" target="_blank" rel="noopener" onclick="trackEvent('InitiateCheckout',{source:'hero'})" class="w-full sm:w-auto text-center px-6 sm:px-7 py-3 rounded-full btn-red font-bold transition glow">
             COMEÇAR AGORA
           </a>
         </div>
-        <div class="mt-5 flex flex-wrap items-center gap-3 text-xs text-white/70">
-          <span class="flex items-center gap-2">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 3l9 4.5v9L12 21 3 16.5v-9L12 3z" stroke="white" opacity=".6"/></svg>
+        <div class="mt-4 sm:mt-5 grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3 text-xs text-white/70">
+          <span class="flex items-center gap-2 justify-center sm:justify-start">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 3l9 4.5v9L12 21 3 16.5v-9L12 3z" stroke="white" opacity=".6"/></svg>
             Pagamento 100% seguro
           </span>
-          <span class="flex items-center gap-2">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="white" opacity=".6" stroke-width="2"/></svg>
+          <span class="flex items-center gap-2 justify-center sm:justify-start">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="white" opacity=".6" stroke-width="2"/></svg>
             Acesso imediato no WhatsApp
           </span>
-          <span class="flex items-center gap-2">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 8v5l3 2" stroke="white" opacity=".6" stroke-width="2"/></svg>
+          <span class="flex items-center gap-2 justify-center sm:justify-start">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 8v5l3 2" stroke="white" opacity=".6" stroke-width="2"/></svg>
             Resultados reais com constância
           </span>
         </div>
       </div>
 
-      <!-- Destaque com VÍDEO explicativo -->
-      <div class="rounded-3xl p-5 bg-zinc-900/70 border border-red-600/20 glow">
-        <div class="flex items-center justify-between">
-          <h3 class="text-xl font-semibold">Conheça a Lola - Sua parceira de transformação</h3>
+      <!-- Destaque com VÍDEO -->
+      <div class="order-1 lg:order-2 rounded-2xl sm:rounded-3xl p-4 sm:p-5 bg-zinc-900/70 border border-red-600/20 glow">
+        <div class="text-center mb-4">
+          <h3 class="text-lg sm:text-xl font-semibold">Conheça a Lola - Sua parceira de transformação</h3>
+          <p class="text-white/80 text-sm mt-2">▶️ Assista e descubra como a Lola pode mudar sua vida em 90 dias</p>
         </div>
-        <p class="text-white/80 text-sm mt-2">▶️ Assista e descubra como a Lola pode mudar sua vida em 90 dias</p>
-        <div class="mt-5 hero-media border border-white/10">
-          <video 
-            playsinline 
-            controls 
-            preload="metadata"
-            style="width: 100%; height: auto; object-fit: contain; background: #000; border-radius: 0.75rem;">
-            <source src="https://res.cloudinary.com/dvyo10ttg/video/upload/v1758288698/WhatsApp_Video_2025-09-19_at_10.16.01_hc2ptd.mp4" type="video/mp4" />
-            Seu navegador não suporta vídeos HTML5.
-          </video>
+        
+        <!-- Vídeo 9:16 responsivo -->
+        <div class="flex justify-center">
+          <div class="hero-media border border-white/10" style="max-width: min(320px, 90vw); width: 100%;">
+            <div style="position: relative; width: 100%; padding-top: 177.78%; border-radius: 0.75rem; overflow: hidden; background: #000;">
+              <video 
+                playsinline 
+                controls 
+                preload="metadata"
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 0.75rem;">
+                <source src="https://res.cloudinary.com/dvyo10ttg/video/upload/v1758288698/WhatsApp_Video_2025-09-19_at_10.16.01_hc2ptd.mp4" type="video/mp4" />
+                Seu navegador não suporta vídeos HTML5.
+              </video>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- A Solução -->
-  <section id="solucao" class="py-16">
-    <div class="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-10 items-center">
-      <div class="rounded-3xl p-6 bg-zinc-900/70 border border-red-600/20 glow">
-        <h2 class="text-3xl font-extrabold">Eu sou a Lola.</h2>
-        <p class="mt-4 text-white/90 text-lg">Mais que ferramenta: sua guia, sua amiga e motivadora. Juntas, vamos transformar hábitos e a sua vida.</p>
+  <section id="solucao" class="py-12 sm:py-16">
+    <div class="max-w-6xl mx-auto px-4 grid lg:grid-cols-2 gap-6 sm:gap-10 items-center">
+      <div class="rounded-2xl sm:rounded-3xl p-4 sm:p-6 bg-zinc-900/70 border border-red-600/20 glow">
+        <h2 class="text-2xl sm:text-3xl font-extrabold">Eu sou a Lola.</h2>
+        <p class="mt-4 text-white/90 text-base sm:text-lg">Mais que ferramenta: sua guia, sua amiga e motivadora. Juntas, vamos transformar hábitos e a sua vida.</p>
         <div class="mt-6 flex flex-col gap-3 text-white/90 text-sm">
           <div class="flex items-start gap-3"><span>💬</span><p>Acompanhamento diário no WhatsApp: mensagens, lembretes e ajustes rápidos.</p></div>
           <div class="flex items-start gap-3"><span>🥗</span><p>Dieta em gramas com os alimentos que você já tem em casa.</p></div>
           <div class="flex items-start gap-3"><span>📊</span><p>Feedback constante para você não desistir.</p></div>
         </div>
-        <a href="https://www.asaas.com/c/qni1ku7sij3v8ef6" target="_blank" rel="noopener" onclick="trackEvent('InitiateCheckout',{source:'solucao'})" class="mt-6 inline-block px-7 py-3 rounded-full btn-red font-bold transition glow">QUERO A LOLA AGORA</a>
+        <a href="https://buy.stripe.com/cNi9AV0jM3Pca7fa4w4ZG00" target="_blank" rel="noopener" onclick="trackEvent('InitiateCheckout',{source:'solucao'})" class="mt-6 block sm:inline-block text-center px-6 sm:px-7 py-3 rounded-full btn-red font-bold transition glow">QUERO A LOLA AGORA</a>
       </div>
       <!-- Chat ilustrativo -->
-      <div class="rounded-3xl p-6 bg-zinc-900/70 border border-red-600/20 glow">
-        <h3 class="text-xl font-bold">Como a conversa com a Lola acontece</h3>
+      <div class="rounded-2xl sm:rounded-3xl p-4 sm:p-6 bg-zinc-900/70 border border-red-600/20 glow">
+        <h3 class="text-lg sm:text-xl font-bold">Como a conversa com a Lola acontece</h3>
         <div class="mt-4 space-y-3">
-          <div><div class="max-w-[80%] rounded-2xl px-4 py-3 bg-white/10">Oi, Lola! Hoje quase pulei o almoço 😕</div></div>
-          <div class="flex justify-end"><div class="max-w-[80%] rounded-2xl px-4 py-3 bg-red-500 text-black font-semibold">Tudo bem! Vamos ajustar o lanche para manter o foco? 🔥</div></div>
-          <div><div class="max-w-[80%] rounded-2xl px-4 py-3 bg-white/10">Tenho banana, iogurte e aveia em casa.</div></div>
-          <div class="flex justify-end"><div class="max-w-[80%] rounded-2xl px-4 py-3 bg-red-500 text-black font-semibold">Perfeito! 150g iogurte + 25g aveia + 1/2 banana. Te guio no resto 😉</div></div>
+          <div><div class="max-w-[85%] sm:max-w-[80%] rounded-2xl px-3 sm:px-4 py-2 sm:py-3 bg-white/10 text-sm">Oi, Lola! Hoje quase pulei o almoço 😕</div></div>
+          <div class="flex justify-end"><div class="max-w-[85%] sm:max-w-[80%] rounded-2xl px-3 sm:px-4 py-2 sm:py-3 bg-red-500 text-black font-semibold text-sm">Tudo bem! Vamos ajustar o lanche para manter o foco? 🔥</div></div>
+          <div><div class="max-w-[85%] sm:max-w-[80%] rounded-2xl px-3 sm:px-4 py-2 sm:py-3 bg-white/10 text-sm">Tenho banana, iogurte e aveia em casa.</div></div>
+          <div class="flex justify-end"><div class="max-w-[85%] sm:max-w-[80%] rounded-2xl px-3 sm:px-4 py-2 sm:py-3 bg-red-500 text-black font-semibold text-sm">Perfeito! 150g iogurte + 25g aveia + 1/2 banana. Te guio no resto 😉</div></div>
         </div>
         <p class="text-white/60 text-xs mt-4">Conversa ilustrativa.</p>
       </div>
@@ -178,143 +187,143 @@
   </section>
 
   <!-- Benefícios -->
-  <section id="beneficios" class="py-20 bg-gradient-to-b from-black to-zinc-950">
-    <div class="max-w-7xl mx-auto px-6">
-      <h2 class="text-3xl font-extrabold text-center">Benefícios que você não recusa</h2>
-      <p class="text-center text-white/80 mt-2">Precisão técnica + carinho humano = transformação.</p>
-      <div class="mt-10 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="rounded-2xl p-6 bg-zinc-900/70 border border-red-600/20 glow">
-          <div class="text-3xl">🤝</div>
-          <h3 class="mt-3 font-semibold text-xl">Apoio diário e emocional</h3>
-          <p class="text-white/80 mt-2">24/7 com você. Entende seus dias difíceis e celebra suas vitórias.</p>
+  <section id="beneficios" class="py-12 sm:py-16 lg:py-20 bg-gradient-to-b from-black to-zinc-950">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-center">Benefícios que você não recusa</h2>
+      <p class="text-center text-white/80 mt-2 text-sm sm:text-base">Precisão técnica + carinho humano = transformação.</p>
+      <div class="mt-8 sm:mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        <div class="rounded-xl sm:rounded-2xl p-4 sm:p-6 bg-zinc-900/70 border border-red-600/20 glow">
+          <div class="text-2xl sm:text-3xl">🤝</div>
+          <h3 class="mt-3 font-semibold text-lg sm:text-xl">Apoio diário e emocional</h3>
+          <p class="text-white/80 mt-2 text-sm sm:text-base">24/7 com você. Entende seus dias difíceis e celebra suas vitórias.</p>
         </div>
-        <div class="rounded-2xl p-6 bg-zinc-900/70 border border-red-600/20 glow">
-          <div class="text-3xl">🥗</div>
-          <h3 class="mt-3 font-semibold text-xl">Dieta perfeita e sem neura</h3>
-          <p class="text-white/80 mt-2">Com o que você tem em casa. Tudo em gramas e macros por refeição.</p>
+        <div class="rounded-xl sm:rounded-2xl p-4 sm:p-6 bg-zinc-900/70 border border-red-600/20 glow">
+          <div class="text-2xl sm:text-3xl">🥗</div>
+          <h3 class="mt-3 font-semibold text-lg sm:text-xl">Dieta perfeita e sem neura</h3>
+          <p class="text-white/80 mt-2 text-sm sm:text-base">Com o que você tem em casa. Tudo em gramas e macros por refeição.</p>
         </div>
-        <div class="rounded-2xl p-6 bg-zinc-900/70 border border-red-600/20 glow">
-          <div class="text-3xl">🧮</div>
-          <h3 class="mt-3 font-semibold text-xl">Precisão da IA</h3>
-          <p class="text-white/80 mt-2">IMC, gasto calórico, peso ideal e estimativa de evolução.</p>
+        <div class="rounded-xl sm:rounded-2xl p-4 sm:p-6 bg-zinc-900/70 border border-red-600/20 glow">
+          <div class="text-2xl sm:text-3xl">🧮</div>
+          <h3 class="mt-3 font-semibold text-lg sm:text-xl">Precisão da IA</h3>
+          <p class="text-white/80 mt-2 text-sm sm:text-base">IMC, gasto calórico, peso ideal e estimativa de evolução.</p>
         </div>
-        <div class="rounded-2xl p-6 bg-zinc-900/70 border border-red-600/20 glow">
-          <div class="text-3xl">🏋️‍♀️</div>
-          <h3 class="mt-3 font-semibold text-xl">Plano completo</h3>
-          <p class="text-white/80 mt-2">Treinos, receitas e direcionamento contínuo no WhatsApp.</p>
+        <div class="rounded-xl sm:rounded-2xl p-4 sm:p-6 bg-zinc-900/70 border border-red-600/20 glow">
+          <div class="text-2xl sm:text-3xl">🏋️‍♀️</div>
+          <h3 class="mt-3 font-semibold text-lg sm:text-xl">Plano completo</h3>
+          <p class="text-white/80 mt-2 text-sm sm:text-base">Treinos, receitas e direcionamento contínuo no WhatsApp.</p>
         </div>
       </div>
 
       <!-- Gatilhos -->
-      <div class="mt-12 grid lg:grid-cols-3 gap-6">
-        <div class="rounded-3xl p-6 bg-zinc-900/70 border border-red-600/20 glow">
-          <h4 class="text-xl font-bold">Mude de vida agora</h4>
-          <p class="text-white/80 mt-2">Não espere "segunda-feira". Comece hoje e se orgulhe de você daqui a 90 dias.</p>
+      <div class="mt-8 sm:mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        <div class="rounded-2xl sm:rounded-3xl p-4 sm:p-6 bg-zinc-900/70 border border-red-600/20 glow">
+          <h4 class="text-lg sm:text-xl font-bold">Mude de vida agora</h4>
+          <p class="text-white/80 mt-2 text-sm sm:text-base">Não espere "segunda-feira". Comece hoje e se orgulhe de você daqui a 90 dias.</p>
         </div>
-        <div class="rounded-3xl p-6 bg-zinc-900/70 border border-red-600/20 glow">
-          <h4 class="text-xl font-bold">Corpo dos sonhos sem loucuras</h4>
-          <p class="text-white/80 mt-2">Constância comendo o que cabe na sua rotina e geladeira.</p>
+        <div class="rounded-2xl sm:rounded-3xl p-4 sm:p-6 bg-zinc-900/70 border border-red-600/20 glow">
+          <h4 class="text-lg sm:text-xl font-bold">Corpo dos sonhos sem loucuras</h4>
+          <p class="text-white/80 mt-2 text-sm sm:text-base">Constância comendo o que cabe na sua rotina e geladeira.</p>
         </div>
-        <div class="rounded-3xl p-6 bg-zinc-900/70 border border-red-600/20 glow">
-          <h4 class="text-xl font-bold">Final de ano inesquecível</h4>
-          <p class="text-white/80 mt-2">Chegue nas festas com confiança, energia e leveza.</p>
+        <div class="rounded-2xl sm:rounded-3xl p-4 sm:p-6 bg-zinc-900/70 border border-red-600/20 glow sm:col-span-2 lg:col-span-1">
+          <h4 class="text-lg sm:text-xl font-bold">Final de ano inesquecível</h4>
+          <p class="text-white/80 mt-2 text-sm sm:text-base">Chegue nas festas com confiança, energia e leveza.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Depoimentos em Vídeo (grade 4 por linha, sem autoplay, com som e controles) -->
-  <section id="depoimentos-video" class="py-16 bg-black/30">
-    <div class="max-w-7xl mx-auto px-6">
+  <section id="depoimentos-video" class="py-12 sm:py-16 bg-black/30">
+    <div class="max-w-7xl mx-auto px-4">
       <div class="flex items-center justify-between flex-wrap gap-3">
-        <h2 class="text-3xl font-extrabold">Depoimentos em Vídeo</h2>
-        <span class="text-white/60 text-sm">Toque para assistir com som</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold">Depoimentos em Vídeo</h2>
+        <span class="text-white/60 text-xs sm:text-sm">Toque para assistir com som</span>
       </div>
 
-      <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+      <div class="mt-6 sm:mt-8 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-5">
         <!-- 1 -->
-        <div class="rounded-xl p-3 bg-zinc-900/70 border border-red-600/20 glow">
+        <div class="rounded-lg sm:rounded-xl p-2 sm:p-3 bg-zinc-900/70 border border-red-600/20 glow">
           <div class="video-card border border-white/10">
-            <video playsinline controls preload="none">
+            <video playsinline controls preload="metadata" poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3Crect width='400' height='225' fill='%23374151'/%3E%3Ctext x='200' y='112' text-anchor='middle' fill='white' font-size='16'%3E▶️ Toque para assistir%3C/text%3E%3C/svg%3E">
               <source src="https://d35ghwdno3nak3.cloudfront.net/veo3/1062060/3f0b53f4-7bd2-4a3c-8b79-3349bc8eb610.mp4" type="video/mp4" />
             </video>
           </div>
-          <p class="text-xs text-white/60 mt-2">Acompanhamento diário</p>
+          <p class="text-xs text-white/60 mt-1 sm:mt-2">Acompanhamento diário</p>
         </div>
 
         <!-- 2 -->
-        <div class="rounded-xl p-3 bg-zinc-900/70 border border-red-600/20 glow">
+        <div class="rounded-lg sm:rounded-xl p-2 sm:p-3 bg-zinc-900/70 border border-red-600/20 glow">
           <div class="video-card border border-white/10">
-            <video playsinline controls preload="none">
+            <video playsinline controls preload="metadata" poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3Crect width='400' height='225' fill='%23374151'/%3E%3Ctext x='200' y='112' text-anchor='middle' fill='white' font-size='16'%3E▶️ Toque para assistir%3C/text%3E%3C/svg%3E">
               <source src="https://d35ghwdno3nak3.cloudfront.net/veo3/1062060/978a8242-0eda-47e0-8201-70778d209e7e.mp4" type="video/mp4" />
             </video>
           </div>
-          <p class="text-xs text-white/60 mt-2">Dieta personalizada</p>
+          <p class="text-xs text-white/60 mt-1 sm:mt-2">Dieta personalizada</p>
         </div>
 
         <!-- 3 -->
-        <div class="rounded-xl p-3 bg-zinc-900/70 border border-red-600/20 glow">
+        <div class="rounded-lg sm:rounded-xl p-2 sm:p-3 bg-zinc-900/70 border border-red-600/20 glow">
           <div class="video-card border border-white/10">
-            <video playsinline controls preload="none">
+            <video playsinline controls preload="metadata" poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3Crect width='400' height='225' fill='%23374151'/%3E%3Ctext x='200' y='112' text-anchor='middle' fill='white' font-size='16'%3E▶️ Toque para assistir%3C/text%3E%3C/svg%3E">
               <source src="https://d35ghwdno3nak3.cloudfront.net/veo3/1062060/5e318042-c608-4128-8034-2fa54fc4b271.mp4" type="video/mp4" />
             </video>
           </div>
-          <p class="text-xs text-white/60 mt-2">Sem erros de macronutrientes</p>
+          <p class="text-xs text-white/60 mt-1 sm:mt-2">Sem erros de macronutrientes</p>
         </div>
 
         <!-- 4 -->
-        <div class="rounded-xl p-3 bg-zinc-900/70 border border-red-600/20 glow">
+        <div class="rounded-lg sm:rounded-xl p-2 sm:p-3 bg-zinc-900/70 border border-red-600/20 glow">
           <div class="video-card border border-white/10">
-            <video playsinline controls preload="none">
+            <video playsinline controls preload="metadata" poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3Crect width='400' height='225' fill='%23374151'/%3E%3Ctext x='200' y='112' text-anchor='middle' fill='white' font-size='16'%3E▶️ Toque para assistir%3C/text%3E%3C/svg%3E">
               <source src="https://d35ghwdno3nak3.cloudfront.net/veo3/1062060/eabda19c-b0cb-4d52-af64-f60025e33c15.mp4" type="video/mp4" />
             </video>
           </div>
-          <p class="text-xs text-white/60 mt-2">Resultados que motivam</p>
+          <p class="text-xs text-white/60 mt-1 sm:mt-2">Resultados que motivam</p>
         </div>
 
         <!-- 5 -->
-        <div class="rounded-xl p-3 bg-zinc-900/70 border border-red-600/20 glow">
+        <div class="rounded-lg sm:rounded-xl p-2 sm:p-3 bg-zinc-900/70 border border-red-600/20 glow">
           <div class="video-card border border-white/10">
-            <video playsinline controls preload="none">
+            <video playsinline controls preload="metadata" poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3Crect width='400' height='225' fill='%23374151'/%3E%3Ctext x='200' y='112' text-anchor='middle' fill='white' font-size='16'%3E▶️ Toque para assistir%3C/text%3E%3C/svg%3E">
               <source src="https://d35ghwdno3nak3.cloudfront.net/veo3/1062060/37972dda-588d-4c3e-b528-42bd1ea69bf1.mp4" type="video/mp4" />
             </video>
           </div>
-          <p class="text-xs text-white/60 mt-2">Suporte no WhatsApp</p>
+          <p class="text-xs text-white/60 mt-1 sm:mt-2">Suporte no WhatsApp</p>
         </div>
 
         <!-- 6 -->
-        <div class="rounded-xl p-3 bg-zinc-900/70 border border-red-600/20 glow">
+        <div class="rounded-lg sm:rounded-xl p-2 sm:p-3 bg-zinc-900/70 border border-red-600/20 glow">
           <div class="video-card border border-white/10">
-            <video playsinline controls preload="none">
+            <video playsinline controls preload="metadata" poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3Crect width='400' height='225' fill='%23374151'/%3E%3Ctext x='200' y='112' text-anchor='middle' fill='white' font-size='16'%3E▶️ Toque para assistir%3C/text%3E%3C/svg%3E">
               <source src="https://d35ghwdno3nak3.cloudfront.net/veo3/1062060/3a7af1a6-692d-4541-b2bb-77b993ef859f.mp4" type="video/mp4" />
             </video>
           </div>
-          <p class="text-xs text-white/60 mt-2">Planos simples e práticos</p>
+          <p class="text-xs text-white/60 mt-1 sm:mt-2">Planos simples e práticos</p>
         </div>
 
         <!-- 7 -->
-        <div class="rounded-xl p-3 bg-zinc-900/70 border border-red-600/20 glow">
+        <div class="rounded-lg sm:rounded-xl p-2 sm:p-3 bg-zinc-900/70 border border-red-600/20 glow">
           <div class="video-card border border-white/10">
-            <video playsinline controls preload="none">
+            <video playsinline controls preload="metadata" poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3Crect width='400' height='225' fill='%23374151'/%3E%3Ctext x='200' y='112' text-anchor='middle' fill='white' font-size='16'%3E▶️ Toque para assistir%3C/text%3E%3C/svg%3E">
               <source src="https://d35ghwdno3nak3.cloudfront.net/veo3/1062060/2057e67b-fce2-4b6f-b109-fd03a91f242b.mp4" type="video/mp4" />
             </video>
           </div>
-          <p class="text-xs text-white/60 mt-2">Rotina que funciona</p>
+          <p class="text-xs text-white/60 mt-1 sm:mt-2">Rotina que funciona</p>
         </div>
 
         <!-- 8 -->
-        <div class="rounded-xl p-3 bg-zinc-900/70 border border-red-600/20 glow">
+        <div class="rounded-lg sm:rounded-xl p-2 sm:p-3 bg-zinc-900/70 border border-red-600/20 glow">
           <div class="video-card border border-white/10">
-            <video playsinline controls preload="none">
+            <video playsinline controls preload="metadata" poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3Crect width='400' height='225' fill='%23374151'/%3E%3Ctext x='200' y='112' text-anchor='middle' fill='white' font-size='16'%3E▶️ Toque para assistir%3C/text%3E%3C/svg%3E">
               <source src="https://d35ghwdno3nak3.cloudfront.net/veo3/1062060/469a9626-2d2b-4e0e-9aaa-a74ec239ec31.mp4" type="video/mp4" />
             </video>
           </div>
-          <p class="text-xs text-white/60 mt-2">Constância com leveza</p>
+          <p class="text-xs text-white/60 mt-1 sm:mt-2">Constância com leveza</p>
         </div>
       </div>
 
-      <div class="text-center mt-10">
-        <a href="https://www.asaas.com/c/qni1ku7sij3v8ef6" target="_blank" rel="noopener" onclick="trackEvent('InitiateCheckout',{source:'depoimentos_video_grid'})" class="px-8 py-4 rounded-full btn-red font-semibold transition inline-block glow">
+      <div class="text-center mt-8 sm:mt-10">
+        <a href="https://buy.stripe.com/cNi9AV0jM3Pca7fa4w4ZG00" target="_blank" rel="noopener" onclick="trackEvent('InitiateCheckout',{source:'depoimentos_video_grid'})" class="w-full sm:w-auto inline-block px-6 sm:px-8 py-3 sm:py-4 rounded-full btn-red font-semibold transition glow">
           Quero começar agora
         </a>
       </div>
@@ -322,47 +331,47 @@
   </section>
 
   <!-- Oferta -->
-  <section id="oferta" class="py-20">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="grid lg:grid-cols-2 gap-8 items-stretch">
-        <div class="rounded-3xl p-6 bg-zinc-900/70 border border-red-600/20 glow">
-          <h3 class="text-2xl font-extrabold">Oferta imperdível</h3>
-          <p class="text-white/80 mt-2">Sua parceira a cada passo para alcançar o corpo dos seus sonhos.</p>
-          <ul class="mt-5 space-y-2 text-white/90">
+  <section id="oferta" class="py-12 sm:py-16 lg:py-20">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid lg:grid-cols-2 gap-6 sm:gap-8 items-stretch">
+        <div class="rounded-2xl sm:rounded-3xl p-4 sm:p-6 bg-zinc-900/70 border border-red-600/20 glow">
+          <h3 class="text-xl sm:text-2xl font-extrabold">Oferta imperdível</h3>
+          <p class="text-white/80 mt-2 text-sm sm:text-base">Sua parceira a cada passo para alcançar o corpo dos seus sonhos.</p>
+          <ul class="mt-5 space-y-2 text-white/90 text-sm sm:text-base">
             <li class="flex items-center gap-2"><span>✔</span> Acompanhamento diário via WhatsApp</li>
             <li class="flex items-center gap-2"><span>✔</span> Dieta personalizada com seus alimentos</li>
             <li class="flex items-center gap-2"><span>✔</span> Treinos e receitas simples</li>
             <li class="flex items-center gap-2"><span>✔</span> Motivação e ajustes sempre que precisar</li>
           </ul>
-          <div class="mt-6 rounded-2xl p-4 bg-white/5">
+          <div class="mt-6 rounded-xl sm:rounded-2xl p-3 sm:p-4 bg-white/5">
             <p class="text-sm text-white/70 line-through">R$ 197,00/mês</p>
-            <p class="text-4xl font-extrabold">R$ 27,90<span class="text-lg font-semibold">/mês</span></p>
+            <p class="text-3xl sm:text-4xl font-extrabold">R$ 27,90<span class="text-base sm:text-lg font-semibold">/mês</span></p>
             <p class="text-red-400 text-sm mt-1">🔥 Promoção relâmpago - Acesso imediato após o pagamento.</p>
           </div>
-          <div class="mt-6 flex flex-wrap gap-3">
-            <a href="https://www.asaas.com/c/qni1ku7sij3v8ef6" target="_blank" rel="noopener" onclick="trackEvent('InitiateCheckout',{source:'oferta_principal'})" class="px-7 py-3 rounded-full btn-red font-bold transition glow">QUERO A LOLA AGORA</a>
-            <a href="#depoimentos-video" class="px-7 py-3 rounded-full border border-white/20 hover:bg-white/10 transition font-semibold">Ver resultados</a>
+          <div class="mt-6 flex flex-col sm:flex-row gap-3">
+            <a href="https://buy.stripe.com/cNi9AV0jM3Pca7fa4w4ZG00" target="_blank" rel="noopener" onclick="trackEvent('InitiateCheckout',{source:'oferta_principal'})" class="text-center px-6 sm:px-7 py-3 rounded-full btn-red font-bold transition glow">QUERO A LOLA AGORA</a>
+            <a href="#depoimentos-video" class="text-center px-6 sm:px-7 py-3 rounded-full border border-white/20 hover:bg-white/10 transition font-semibold">Ver resultados</a>
           </div>
-          <div class="mt-6 flex flex-wrap items-center gap-4 text-sm text-white/70">
-            <span class="text-xs bg-white/10 px-2 py-1 rounded">Garantia de satisfação</span>
-            <span>Assinatura mensal, sem fidelidade</span>
-            <span class="flex items-center gap-1">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 11l9-7 9 7v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-8z" stroke="white" opacity=".6"/></svg>
-              Checkout seguro Asaas
+          <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4 text-xs sm:text-sm text-white/70">
+            <span class="text-xs bg-white/10 px-2 py-1 rounded text-center">Garantia de satisfação</span>
+            <span class="text-center sm:text-left">Assinatura mensal, sem fidelidade</span>
+            <span class="flex items-center gap-1 justify-center sm:justify-start">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M3 11l9-7 9 7v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-8z" stroke="white" opacity=".6"/></svg>
+              Checkout seguro Stripe
             </span>
           </div>
-          <div class="mt-4 text-xs text-white/60">Pagou? A Lola te dá boas-vindas no WhatsApp automaticamente.</div>
+          <div class="mt-4 text-xs text-white/60 text-center sm:text-left">Pagou? A Lola te dá boas-vindas no WhatsApp automaticamente.</div>
         </div>
 
         <!-- Urgência -->
-        <div class="rounded-3xl p-6 bg-zinc-900/70 border border-red-600/20 glow">
-          <h4 class="text-xl font-bold">Vagas do lote atual</h4>
+        <div class="rounded-2xl sm:rounded-3xl p-4 sm:p-6 bg-zinc-900/70 border border-red-600/20 glow">
+          <h4 class="text-lg sm:text-xl font-bold">Vagas do lote atual</h4>
           <p class="text-white/80 text-sm mt-1">Entrando agora, você tranca o preço promocional.</p>
           <div class="mt-4">
             <div class="w-full bg-white/10 rounded-full h-3 overflow-hidden">
               <div id="loteBar" class="h-3 rounded-full" style="width: 68%; background: linear-gradient(90deg,#ef4444,#dc2626)"></div>
             </div>
-            <div class="flex items-center justify-between mt-2 text-sm text-white/80">
+            <div class="flex items-center justify-between mt-2 text-xs sm:text-sm text-white/80">
               <span id="loteTxt">68% das vagas preenchidas</span>
               <span class="font-semibold"><span id="timerCard">--:--:--</span></span>
             </div>
@@ -372,18 +381,18 @@
             <li>Mudança real: hábitos simples, sem neura.</li>
             <li>Seu ritmo, sua rotina, seu corpo dos sonhos.</li>
           </ul>
-          <a href="https://www.asaas.com/c/qni1ku7sij3v8ef6" target="_blank" rel="noopener" onclick="trackEvent('InitiateCheckout',{source:'oferta_lote'})" class="mt-6 inline-block px-7 py-3 rounded-full bg-white text-black font-bold hover:opacity-90 transition glow">Garantir minha vaga</a>
+          <a href="https://buy.stripe.com/cNi9AV0jM3Pca7fa4w4ZG00" target="_blank" rel="noopener" onclick="trackEvent('InitiateCheckout',{source:'oferta_lote'})" class="mt-6 block text-center px-6 sm:px-7 py-3 rounded-full bg-white text-black font-bold hover:opacity-90 transition glow">Garantir minha vaga</a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Prova Social (texto) -->
-  <section id="provas" class="py-16">
-    <div class="max-w-7xl mx-auto px-6">
-      <h2 class="text-3xl font-extrabold text-center">O que nossas clientes estão dizendo</h2>
-      <p class="text-center text-white/80 mt-2">Transformações reais com a Lola ao lado.</p>
-      <div class="mt-8 grid md:grid-cols-3 gap-6">
+  <section id="provas" class="py-12 sm:py-16">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-center">O que nossas clientes estão dizendo</h2>
+      <p class="text-center text-white/80 mt-2 text-sm sm:text-base">Transformações reais com a Lola ao lado.</p>
+      <div class="mt-6 sm:mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
         <div class="rounded-2xl p-5 bg-zinc-900/70 border border-red-600/20 glow">
           <p class="text-white/90">"Eu me sentia perdida, mas a Lola me salvou. Em 90 dias, eu perdi 8kg e recuperei minha autoestima."</p>
           <p class="text-white/60 text-sm mt-3">— Marina, 34</p>
@@ -431,11 +440,11 @@
         </details>
         <details class="rounded-xl p-4 bg-zinc-900/70 border border-red-600/20">
           <summary class="font-semibold cursor-pointer">6. Como funciona a assinatura?</summary>
-          <p class="text-white/80 mt-2">R$ 50,00/mês. Acesso imediato no WhatsApp após o pagamento, sem fidelidade. Cancele quando quiser.</p>
+          <p class="text-white/80 mt-2">R$ 27,90/mês. Acesso imediato no WhatsApp após o pagamento via Stripe, sem fidelidade. Cancele quando quiser.</p>
         </details>
       </div>
       <div class="text-center mt-10">
-        <a href="https://www.asaas.com/c/qni1ku7sij3v8ef6" target="_blank" rel="noopener" onclick="trackEvent('InitiateCheckout',{source:'faq'})" class="px-8 py-4 rounded-full btn-red font-semibold transition inline-block glow">
+        <a href="https://buy.stripe.com/cNi9AV0jM3Pca7fa4w4ZG00" target="_blank" rel="noopener" onclick="trackEvent('InitiateCheckout',{source:'faq'})" class="px-8 py-4 rounded-full btn-red font-semibold transition inline-block glow">
           Garantir meu acesso agora
         </a>
         <p class="text-white/70 text-sm mt-2">Pagamento confirmado = Boas-vindas no WhatsApp em minutos.</p>
@@ -448,7 +457,7 @@
     <div class="max-w-5xl mx-auto px-6 text-center">
       <h3 class="text-3xl font-extrabold">Este é o seu momento</h3>
       <p class="text-white/80 mt-2">Imagine-se no final do ano com confiança, leveza e orgulho do caminho percorrido. A Lola vai com você.</p>
-      <a href="https://www.asaas.com/c/qni1ku7sij3v8ef6" target="_blank" rel="noopener" onclick="trackEvent('InitiateCheckout',{source:'cta_final'})" class="mt-6 inline-block px-8 py-4 rounded-full bg-white text-black font-bold hover:opacity-90 transition glow">
+      <a href="https://buy.stripe.com/cNi9AV0jM3Pca7fa4w4ZG00" target="_blank" rel="noopener" onclick="trackEvent('InitiateCheckout',{source:'cta_final'})" class="mt-6 inline-block px-8 py-4 rounded-full bg-white text-black font-bold hover:opacity-90 transition glow">
         Eu quero mudar de vida agora
       </a>
     </div>
@@ -459,7 +468,7 @@
     <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
       <p class="text-white/60 text-sm">© <span id="ano"></span> Lola Nutri — Todos os direitos reservados.</p>
       <div class="text-white/50 text-xs flex items-center gap-3">
-        <span>Acesso imediato após o pagamento no checkout seguro Asaas.</span>
+        <span>Acesso imediato após o pagamento no checkout seguro Stripe.</span>
         <span class="opacity-80">|</span>
         <span>Lola Nutri — desenvolvida por Next Intellectus</span>
       </div>
@@ -467,7 +476,7 @@
   </footer>
 
   <!-- CTA flutuante -->
-  <a id="ctaZap" href="https://www.asaas.com/c/qni1ku7sij3v8ef6" target="_blank" rel="noopener" onclick="trackEvent('InitiateCheckout',{source:'cta_floating'})" class="fixed bottom-6 right-6 btn-red text-white font-bold rounded-full px-5 py-3 shadow-lg glow flex items-center gap-2 hover:scale-[1.03] transition">
+  <a id="ctaZap" href="https://buy.stripe.com/cNi9AV0jM3Pca7fa4w4ZG00" target="_blank" rel="noopener" onclick="trackEvent('InitiateCheckout',{source:'cta_floating'})" class="fixed bottom-6 right-6 btn-red text-white font-bold rounded-full px-5 py-3 shadow-lg glow flex items-center gap-2 hover:scale-[1.03] transition">
     <span>🚀</span> Garantir meu acesso
   </a>
 
@@ -505,5 +514,5 @@
       if(txt) txt.textContent = `${fill}% das vagas preenchidas`;
     })();
   </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'981973f8f3473236',t:'MTc1ODI4ODc4Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9824075f150200d8',t:'MTc1ODM5OTY4Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
