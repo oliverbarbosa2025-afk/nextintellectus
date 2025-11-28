@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Obrigado!</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Obrigado!</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         
         body {
@@ -49,36 +49,26 @@
             background: #ffffff;
         }
     </style>
-</head>
-<body class="simple-bg min-h-screen flex items-center justify-center p-4">
-    <div class="bg-white rounded-2xl shadow-lg p-8 md:p-12 max-w-md w-full text-center">
-        <div class="checkmark-animation mb-6">
-            <div class="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto">
-                <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
-                </svg>
-            </div>
-        </div>
-        
-        <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4 fade-in">
-            Agradecemos sua assinatura! 🎉
-        </h1>
-        
-        <p class="text-gray-600 text-lg mb-6 fade-in leading-relaxed">
-            Em instantes a Lola te chamará no WhatsApp para dar continuidade ao seu atendimento.
-        </p>
-        
-        <div class="bg-gray-50 rounded-lg p-4 mb-6 fade-in">
-            <p class="text-sm text-gray-500 mb-2">
-                📱 Aguarde a mensagem da Lola no WhatsApp
-            </p>
-            <p class="text-sm text-gray-500">
-                ⏱️ Tempo estimado: alguns minutos
-            </p>
-        </div>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="/_sdk/element_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="simple-bg min-h-screen flex items-center justify-center p-4">
+  <div class="bg-white rounded-2xl shadow-lg p-8 md:p-12 max-w-md w-full text-center"><!-- Ícone de check animado -->
+   <div class="checkmark-animation mb-6">
+    <div class="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto">
+     <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+     </svg>
     </div>
-
-    <script>
+   </div><!-- Título principal -->
+   <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4 fade-in">Agradecemos sua assinatura! 🎉</h1><!-- Mensagem de agradecimento -->
+   <p class="text-gray-600 text-lg mb-6 fade-in leading-relaxed">Em instantes a Lola te chamará no WhatsApp para dar continuidade ao seu atendimento.</p><!-- Informações adicionais -->
+   <div class="bg-gray-50 rounded-lg p-4 mb-6 fade-in">
+    <p class="text-sm text-gray-500 mb-2">📱 Aguarde a mensagem da Lola no WhatsApp</p>
+    <p class="text-sm text-gray-500">⏱️ Tempo estimado: alguns minutos</p>
+   </div>
+  </div><!-- Facebook Pixel Code -->
+  <script>
         !function(f,b,e,v,n,t,s)
         {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
         n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -87,19 +77,42 @@
         t.src=v;s=b.getElementsByTagName(e)[0];
         s.parentNode.insertBefore(t,s)}(window, document,'script',
         'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '1788063742589202');
+        fbq('init', '1234567890123456');
+        fbq('track', 'PageView');
         
         // Dispara evento de Purchase quando a página carrega
         fbq('track', 'Purchase', {
-            value: 0.00, // IMPORTANTE: Substitua 0.00 pelo valor real da sua venda
+            value: 0.00,
             currency: 'BRL'
         });
     </script>
-    <noscript><img height="1" width="1" style="display:none"
-        src="https://www.facebook.com/tr?id=1788063742589202&ev=PageView&noscript=1"
-    /></noscript>
-    
-    <script>
+  <noscript>
+   <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1234567890123456&amp;ev=PageView&amp;noscript=1">
+  </noscript><!-- TikTok Pixel Code -->
+  <script>
+        <!-- TikTok Pixel Code Start -->
+<script>
+!function (w, d, t) {
+  w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
+var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
+;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+
+
+  ttq.load('D4KSBHBC77U4IAHDO2LG');
+  ttq.page();
+}(window, document, 'ttq');
+</script>
+<!-- TikTok Pixel Code End -->
+          
+          // Dispara evento de CompletePayment (equivalente ao Purchase)
+          ttq.track('CompletePayment', {
+            value: 0.00,
+            currency: 'BRL'
+          });
+        }(window, document, 'ttq');
+    </script>
+  <script>
+        
         // Adiciona um pouco de interatividade extra
         document.addEventListener('DOMContentLoaded', function() {
             // Efeito de confete virtual (simulado com emojis)
@@ -145,5 +158,5 @@
             }, 3000);
         }
     </script>
-</body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a5b271cf15201c1',t:'MTc2NDM0NjQwOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
